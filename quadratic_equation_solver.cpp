@@ -2,176 +2,168 @@
 #include <math.h>
 #include <assert.h>
 
-int input_coefs(double* a, double* b, double* c);
-int solve_quad_eq(double a, double b, double c, double *x1, double *x2);
-int solve_line_eq(double b, double c, double *x1);
-int print_roots(int number, double x1, double x2);
-bool ezero(double x);
-
-enum ROOTS_NUMBER
+enum RootsNumber
 {
     NO_ROOTS,
     ONE_ROOT,
     TWO_ROOTS,
-    INFINITE_NUM_OF_ROOTS
+    INFINITE_NUM_OF_ROOTS,
 };
-struct coefficients
+enum ProgramStatus
+{
+    OK,
+    PRINT_ROOTS_ERROR_CODE,
+};
+
+struct QuadEqParameters
 {
     double a;
     double b;
     double c;
-};
-struct roots
-{
     double x1;
     double x2;
 };
 
+void input_coefs(double* var_adress, char var_char);
+void clear_buffer();
+RootsNumber solve_quad_eq(struct QuadEqParameters* params);
+RootsNumber solve_line_eq(struct QuadEqParameters* params);
+ProgramStatus print_roots(int number, struct QuadEqParameters* roots);
+bool is_zero(double x);
+
 int main()
 {
-    struct coefficients coefs = {0, 0, 0};
-    struct roots roots = {0, 0};
-    int equation_roots_number = 0;
-    int code_status = 0;
+    struct QuadEqParameters quad_eq_params = {0, 0, 0, 0, 0};
+    RootsNumber equation_roots_number = NO_ROOTS;
+    ProgramStatus code_status = OK;
 
-    code_status = input_coefs(&coefs.a, &coefs.b, &coefs.c);
-    if (code_status != 0)
-        return code_status;
-    equation_roots_number = solve_quad_eq(coefs.a, coefs.b, coefs.c, &roots.x1, &roots.x2);
-    code_status = print_roots(equation_roots_number, roots.x1, roots.x2);
+    printf("# Enter the coefficients of quadratic equation:\n");
+    input_coefs(&quad_eq_params.a, 'a');
+    input_coefs(&quad_eq_params.b, 'b');
+    input_coefs(&quad_eq_params.c, 'c');
+
+    equation_roots_number = solve_quad_eq(&quad_eq_params);
+    code_status = print_roots(equation_roots_number, &quad_eq_params);
 
     return code_status;
 }
 
 
-int input_coefs(double* a, double* b, double* c)
+void input_coefs(double* var_adress, char var_char)
 {
-    assert(a != NULL);
-    assert(b != NULL);
-    assert(c != NULL);
-    assert(a != b);
-    assert(a != c);
-    assert(b != c);
+    assert(var_adress != NULL);
 
-    printf("# Enter the coefficients of quadratic equation:\n");
+    printf("# %c = ", var_char);
 
-    printf("# a = ");
-    if (scanf("%lf", a) != 1)
+    while (scanf("%lf", var_adress) != 1)
     {
-        printf("Invalid value");
-        return 1;
+        clear_buffer();
+        printf("Invalid value, try again\n");
+        printf("# %c = ", var_char);
     }
-
-    printf("# b = ");
-    if (scanf("%lf", b) != 1)
-    {
-        printf("Invalid value");
-        return 1;
-    }
-
-    printf("# c = ");
-    if (scanf("%lf", c) != 1)
-    {
-        printf("Invalid value");
-        return 1;
-    }
-    return 0;
 }
 
 
-int solve_quad_eq(double a, double b, double c, double* x1, double* x2)
+void clear_buffer()
 {
+    while (getchar() != '\n'){}
+}
+
+
+RootsNumber solve_quad_eq(struct QuadEqParameters* params)
+{
+    double a = params->a, b = params->b, c = params->c;
+
     assert(std::isfinite(a));
     assert(std::isfinite(b));
     assert(std::isfinite(c));
-    assert(x1 != NULL);
-    assert(x2 != NULL);
-    assert(x1 != x2);
+    assert(params != NULL);
 
     double D = b*b - 4*a*c;
-    if (ezero(a))
-        return solve_line_eq(b, c, x1);
+    if (is_zero(a))
+        return solve_line_eq(params);
     else if (D < 0)
-        return 0;
-    else if (ezero(D))
+        return NO_ROOTS;
+    else if (is_zero(D))
     {
-        *x1 = -b/(2*a);
-        return 1;
+        params->x1 = -b/(2*a);
+        return ONE_ROOT;
     }
     else
     {
-        *x1 = (-b - sqrt(D))/(2*a);
-        *x2 = (-b + sqrt(D))/(2*a);
-        return 2;
+        params->x1 = (-b - sqrt(D))/(2*a);
+        params->x2 = (-b + sqrt(D))/(2*a);
+        return TWO_ROOTS;
     }
 }
 
 
-int solve_line_eq(double b, double c, double* x1)
+RootsNumber solve_line_eq(struct QuadEqParameters* params)
 {
+    double b = params->b, c = params->c;
+
     assert(std::isfinite(b));
     assert(std::isfinite(c));
-    assert(x1 != NULL);
+    assert(params != NULL);
 
-    if (ezero(b))
+    if (is_zero(b))
     {
-        if (ezero(c))
-            return 3;
+        if (is_zero(c))
+            return INFINITE_NUM_OF_ROOTS;
         else
-            return 0;
+            return NO_ROOTS;
     }
     else
     {
-        *x1 = -c/b;
-        return 1;
+        params->x1 = -c/b;
+        return ONE_ROOT;
     }
 }
 
 
-int print_roots(int number, double x1, double x2)
+ProgramStatus print_roots(int number, struct QuadEqParameters* roots)
 {
     assert(std::isfinite(number));
-    assert(std::isfinite(x1));
-    assert(std::isfinite(x2));
+    assert(roots != NULL);
 
-    if (ezero(x1))
-        x1 = 0.0;
-    if (ezero(x2))
-        x2 = 0.0;
+    if (is_zero(roots->x1))
+        roots->x1 = 0.0;
+    if (is_zero(roots->x2))
+        roots->x2 = 0.0;
 
     switch (number)
     {
         case NO_ROOTS:
         {
             printf("This equation has no real roots\n");
-            return 0;
+            return OK;
         }
         case ONE_ROOT:
         {
-            printf("This equation has only one real root: %.2f\n", x1);
-            return 0;
+            printf("This equation has only one real root: %.2f\n", roots->x1);
+            return OK;
         }
         case TWO_ROOTS:
         {
-            printf("This equation has only two real roots: %.2f; %.2f\n", x1, x2);
-            return 0;
+            printf("This equation has only two real roots: %.2f; %.2f\n", roots->x1, roots->x2);
+            return OK;
         }
         case INFINITE_NUM_OF_ROOTS:
         {
             printf("This equation has an infinite number of real roots\n");
-            return 0;
+            return OK;
         }
         default:
         {
             printf("Unknown error:\n"
-                   "print_roots(): variable number = %d is invalid\n", number);
-            return 1;
+                   "In function print_roots(): variable number = %d is invalid\n", number);
+            return PRINT_ROOTS_ERROR_CODE;
         }
     }
 }
 
 
-bool ezero(double x)
+bool is_zero(double x)
 {
     assert(std::isfinite(x));
     return abs(x) <= 0.1E-7;
