@@ -1,75 +1,178 @@
-#include <TXLib.h>
 #include <stdio.h>
 #include <math.h>
-int solve_qe(double a, double b, double c, double *px1, double *px2);
-int solve_nonqe(double b, double c, double *px1);  // Solve linear equation (a = 0)
-void answer_qe(int number, double x1, double x2);  // Print answer of the quadratic equation
+#include <assert.h>
+
+int input_coefs(double* a, double* b, double* c);
+int solve_quad_eq(double a, double b, double c, double *x1, double *x2);
+int solve_line_eq(double b, double c, double *x1);
+int print_roots(int number, double x1, double x2);
+bool ezero(double x);
+
+enum ROOTS_NUMBER
+{
+    NO_ROOTS,
+    ONE_ROOT,
+    TWO_ROOTS,
+    INFINITE_NUM_OF_ROOTS
+};
+struct coefficients
+{
+    double a;
+    double b;
+    double c;
+};
+struct roots
+{
+    double x1;
+    double x2;
+};
 
 int main()
 {
-    int number = 0;  // Number of solutions (3 = infinite)
-    double a = 0; double b = 0; double c = 0;
-    double x1 = 0; double x2 = 0;
+    struct coefficients coefs = {0, 0, 0};
+    struct roots roots = {0, 0};
+    int equation_roots_number = 0;
+    int code_status = 0;
 
-    printf("Enter the coefficients of quadratic equation:\n");
-    printf("a = ");
-    scanf("%lf", &a);
-    printf("b = ");
-    scanf("%lf", &b);
-    printf("c = ");
-    scanf("%lf", &c);
+    code_status = input_coefs(&coefs.a, &coefs.b, &coefs.c);
+    if (code_status != 0)
+        return code_status;
+    equation_roots_number = solve_quad_eq(coefs.a, coefs.b, coefs.c, &roots.x1, &roots.x2);
+    code_status = print_roots(equation_roots_number, roots.x1, roots.x2);
 
-    number = solve_qe(a, b, c, &x1, &x2);
-    answer_qe(number, x1, x2);
+    return code_status;
+}
 
+
+int input_coefs(double* a, double* b, double* c)
+{
+    assert(a != NULL);
+    assert(b != NULL);
+    assert(c != NULL);
+    assert(a != b);
+    assert(a != c);
+    assert(b != c);
+
+    printf("# Enter the coefficients of quadratic equation:\n");
+
+    printf("# a = ");
+    if (scanf("%lf", a) != 1)
+    {
+        printf("Invalid value");
+        return 1;
+    }
+
+    printf("# b = ");
+    if (scanf("%lf", b) != 1)
+    {
+        printf("Invalid value");
+        return 1;
+    }
+
+    printf("# c = ");
+    if (scanf("%lf", c) != 1)
+    {
+        printf("Invalid value");
+        return 1;
+    }
     return 0;
 }
 
 
-void answer_qe(int number, double x1, double x2)  // Print answer of the quadratic equation
+int solve_quad_eq(double a, double b, double c, double* x1, double* x2)
 {
-    if (number == 0)
-        printf("This equation has no real roots\n");
-    else if (number == 1)
-        printf("This equation has only one real root: %.2f\n", x1);
-    else if (number == 2)
-        printf("This equation has only two real roots: %.2f; %.2f\n", x1, x2);
-    else if (number == 3)
-        printf("This equation has an infinite number of real roots\n");
-    else
-        printf("Unknown error\n");
-}
+    assert(std::isfinite(a));
+    assert(std::isfinite(b));
+    assert(std::isfinite(c));
+    assert(x1 != NULL);
+    assert(x2 != NULL);
+    assert(x1 != x2);
 
-
-int solve_qe(double a, double b, double c, double *px1, double *px2)
-{
     double D = b*b - 4*a*c;
-    if (abs(a) <= 0.1E-10)
-        return solve_nonqe(b, c, px1);
+    if (ezero(a))
+        return solve_line_eq(b, c, x1);
     else if (D < 0)
         return 0;
-    else if (abs(D) <= 0.1E-10) {
-        *px1 = -b/(2*a);
+    else if (ezero(D))
+    {
+        *x1 = -b/(2*a);
         return 1;
     }
-    else {
-        *px1 = (-b + sqrt(D))/(2*a);
-        *px2 = (-b - sqrt(D))/(2*a);
+    else
+    {
+        *x1 = (-b - sqrt(D))/(2*a);
+        *x2 = (-b + sqrt(D))/(2*a);
         return 2;
     }
 }
 
 
-int solve_nonqe(double b, double c, double *px1)  // Solve linear equation (a = 0)
+int solve_line_eq(double b, double c, double* x1)
 {
-    if (abs(b) <= 0.1E-10) {
-        if (abs(c) <= 0.1E-10)
+    assert(std::isfinite(b));
+    assert(std::isfinite(c));
+    assert(x1 != NULL);
+
+    if (ezero(b))
+    {
+        if (ezero(c))
             return 3;
         else
             return 0;
     }
-    else {
-        *px1 = -c/b;
+    else
+    {
+        *x1 = -c/b;
         return 1;
     }
+}
+
+
+int print_roots(int number, double x1, double x2)
+{
+    assert(std::isfinite(number));
+    assert(std::isfinite(x1));
+    assert(std::isfinite(x2));
+
+    if (ezero(x1))
+        x1 = 0.0;
+    if (ezero(x2))
+        x2 = 0.0;
+
+    switch (number)
+    {
+        case NO_ROOTS:
+        {
+            printf("This equation has no real roots\n");
+            return 0;
+        }
+        case ONE_ROOT:
+        {
+            printf("This equation has only one real root: %.2f\n", x1);
+            return 0;
+        }
+        case TWO_ROOTS:
+        {
+            printf("This equation has only two real roots: %.2f; %.2f\n", x1, x2);
+            return 0;
+        }
+        case INFINITE_NUM_OF_ROOTS:
+        {
+            printf("This equation has an infinite number of real roots\n");
+            return 0;
+        }
+        default:
+        {
+            printf("Unknown error:\n"
+                   "print_roots(): variable number = %d is invalid\n", number);
+            return 1;
+        }
+    }
+}
+
+
+bool ezero(double x)
+{
+    assert(std::isfinite(x));
+    return abs(x) <= 0.1E-7;
 }
