@@ -22,34 +22,33 @@ struct QuadEqParameters
     double c;
     double x1;
     double x2;
+    RootsNumber roots_number;
 };
 
-void input_coefs(double* var_adress, char var_char);
+void input_coeff(double* var_adress, char var_char);
 void clear_buffer();
 RootsNumber solve_quad_eq(struct QuadEqParameters* params);
 RootsNumber solve_line_eq(struct QuadEqParameters* params);
-ProgramStatus print_roots(int number, struct QuadEqParameters* roots);
+ProgramStatus print_roots(struct QuadEqParameters* roots);
 bool is_zero(double x);
 
 int main()
 {
-    struct QuadEqParameters quad_eq_params = {0, 0, 0, 0, 0};
-    RootsNumber equation_roots_number = NO_ROOTS;
+    struct QuadEqParameters quad_eq_params = {};
     ProgramStatus code_status = OK;
 
     printf("# Enter the coefficients of quadratic equation:\n");
-    input_coefs(&quad_eq_params.a, 'a');
-    input_coefs(&quad_eq_params.b, 'b');
-    input_coefs(&quad_eq_params.c, 'c');
+    input_coeff(&quad_eq_params.a, 'a');
+    input_coeff(&quad_eq_params.b, 'b');
+    input_coeff(&quad_eq_params.c, 'c');
 
-    equation_roots_number = solve_quad_eq(&quad_eq_params);
-    code_status = print_roots(equation_roots_number, &quad_eq_params);
+    quad_eq_params.roots_number = solve_quad_eq(&quad_eq_params);
+    code_status = print_roots(&quad_eq_params);
 
     return code_status;
 }
 
-
-void input_coefs(double* var_adress, char var_char)
+void input_coeff(double* var_adress, char var_char)
 {
     assert(var_adress != NULL);
 
@@ -66,33 +65,33 @@ void input_coefs(double* var_adress, char var_char)
 
 void clear_buffer()
 {
-    while (getchar() != '\n'){}
+    while (getchar() != '\n') {}
 }
 
 
 RootsNumber solve_quad_eq(struct QuadEqParameters* params)
 {
+    assert(std::isfinite(params->a));
+    assert(std::isfinite(params->b));
+    assert(std::isfinite(params->c));
+    assert(params != NULL); // check this assert
+
     double a = params->a, b = params->b, c = params->c;
 
-    assert(std::isfinite(a));
-    assert(std::isfinite(b));
-    assert(std::isfinite(c));
-    assert(params != NULL);
-
-    double D = b*b - 4*a*c;
+    double discr = b*b - 4*a*c; // discr
     if (is_zero(a))
         return solve_line_eq(params);
-    else if (D < 0)
+    else if (discr < 0)
         return NO_ROOTS;
-    else if (is_zero(D))
+    else if (is_zero(discr))
     {
         params->x1 = -b/(2*a);
         return ONE_ROOT;
     }
     else
     {
-        params->x1 = (-b - sqrt(D))/(2*a);
-        params->x2 = (-b + sqrt(D))/(2*a);
+        params->x1 = (-b - sqrt(discr))/(2*a);
+        params->x2 = (-b + sqrt(discr))/(2*a);
         return TWO_ROOTS;
     }
 }
@@ -100,11 +99,11 @@ RootsNumber solve_quad_eq(struct QuadEqParameters* params)
 
 RootsNumber solve_line_eq(struct QuadEqParameters* params)
 {
-    double b = params->b, c = params->c;
-
-    assert(std::isfinite(b));
-    assert(std::isfinite(c));
+    assert(std::isfinite(params->b));
+    assert(std::isfinite(params->c));
     assert(params != NULL);
+
+    double b = params->b, c = params->c;
 
     if (is_zero(b))
     {
@@ -121,9 +120,8 @@ RootsNumber solve_line_eq(struct QuadEqParameters* params)
 }
 
 
-ProgramStatus print_roots(int number, struct QuadEqParameters* roots)
+ProgramStatus print_roots(struct QuadEqParameters* roots)
 {
-    assert(std::isfinite(number));
     assert(roots != NULL);
 
     if (is_zero(roots->x1))
@@ -131,7 +129,7 @@ ProgramStatus print_roots(int number, struct QuadEqParameters* roots)
     if (is_zero(roots->x2))
         roots->x2 = 0.0;
 
-    switch (number)
+    switch (roots->roots_number)
     {
         case NO_ROOTS:
         {
@@ -156,7 +154,7 @@ ProgramStatus print_roots(int number, struct QuadEqParameters* roots)
         default:
         {
             printf("Unknown error:\n"
-                   "In function print_roots(): variable number = %d is invalid\n", number);
+                   "In function print_roots(): variable number = %d is invalid\n", roots->roots_number);
             return PRINT_ROOTS_ERROR_CODE;
         }
     }
