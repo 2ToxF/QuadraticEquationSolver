@@ -74,11 +74,11 @@ RootsNumber solve_quad_eq(struct QuadEqParameters* params)
     assert(std::isfinite(params->a));
     assert(std::isfinite(params->b));
     assert(std::isfinite(params->c));
-    assert(params != NULL); // check this assert
+    assert(params != NULL);
 
     double a = params->a, b = params->b, c = params->c;
 
-    double discr = b*b - 4*a*c; // discr
+    double discr = b*b - 4*a*c;
     if (is_zero(a))
         return solve_line_eq(params);
     else if (discr < 0)
