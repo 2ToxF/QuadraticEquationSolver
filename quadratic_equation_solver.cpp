@@ -11,12 +11,15 @@ enum RootsNumber
     TWO_ROOTS,
     INFINITE_NUM_OF_ROOTS,
 };
-enum ProgramStatus
+enum CodeStatus
 {
     OK,
-    PRINT_ROOTS_ERROR_CODE,
-    TEST_FAILED_ERROR=1,
     NUMBER_IS_INFINITE_ERROR=1,
+};
+enum TestStatus
+{
+    TEST_SUCCEED,
+    TEST_FAILED,
 };
 
 struct QuadEqParameters
@@ -29,28 +32,30 @@ struct QuadEqParameters
     RootsNumber roots_number;
 };
 
-ProgramStatus run_all_tests();
 void clear_buffer();
-ProgramStatus print_infinite_error(const char var[]);
-ProgramStatus print_test_result(int test_number, struct QuadEqParameters* params, struct QuadEqParameters* expected_roots);
 void input_coeff(double* var_adress, char var_char);
 bool is_equal(double x, double y);
-ProgramStatus isfinite_check(double x);
+CodeStatus isfinite_check(double x);
 bool is_zero(double x);
-ProgramStatus print_roots(struct QuadEqParameters* roots);
-ProgramStatus solve_line_eq(struct QuadEqParameters* params);
-ProgramStatus solve_quad_eq(struct QuadEqParameters* params);
-ProgramStatus run_test(int test_number, struct QuadEqParameters* params);
+CodeStatus print_infinite_error(const char var[]);
+void print_roots(struct QuadEqParameters* roots);
+void print_test_result(TestStatus tes_status, int test_number,
+                       const struct QuadEqParameters* params, struct QuadEqParameters* expected_roots);
+CodeStatus run_all_tests();
+CodeStatus run_test(TestStatus* test_status, const struct QuadEqParameters* expected_roots,
+                    struct QuadEqParameters* params);
+CodeStatus solve_line_eq(struct QuadEqParameters* params);
+CodeStatus solve_quad_eq(struct QuadEqParameters* params);
 
 int main()
 {
 #ifdef TEST
-    ProgramStatus code_status = OK;
+    CodeStatus code_status = OK;
     code_status = run_all_tests();
     return code_status;
 #else
     struct QuadEqParameters quad_eq_params = {};
-    ProgramStatus code_status = OK;
+    CodeStatus code_status = OK;
 
     printf("# Enter the coefficients of quadratic equation:\n");
     input_coeff(&quad_eq_params.a, 'a');
@@ -60,63 +65,9 @@ int main()
     code_status = solve_quad_eq(&quad_eq_params);
     if (code_status != OK)
         return code_status;
-    code_status = print_roots(&quad_eq_params);
-
+    print_roots(&quad_eq_params);
     return code_status;
 #endif
-}
-
-
-ProgramStatus run_all_tests()
-{
-    ProgramStatus test_status = OK;
-
-    struct QuadEqParameters test_params[]
-    {
-        {0, 0, 0, 0, 0, INFINITE_NUM_OF_ROOTS},
-        {0, 0, 1, 0, 0, NO_ROOTS},
-        {0, 1, 0, 0, 0, ONE_ROOT},
-        {0, 2.32, -135.952, 58.6, 0, ONE_ROOT},
-        {1, 1, 1, 0, 0, NO_ROOTS},
-        {1, 4, 4, -2, 0, ONE_ROOT},
-        {1, -1, 0.25, 0.5, 0, ONE_ROOT},
-        {1, 2, -3, -3, 1, TWO_ROOTS},
-        {7.4, 2.1, -5.67, -1.0286554, 0.7448716, TWO_ROOTS},
-    };
-
-    for (int i = 0; i < 9; i++)
-        test_status = run_test(i+1, &test_params[i]);
-    return test_status;
-}
-
-
-ProgramStatus print_infinite_error(const char var[])
-{
-    printf("error:\n"
-          "value of variable %s is infinite", var);
-    return NUMBER_IS_INFINITE_ERROR;
-}
-
-
-ProgramStatus print_test_result(int test_number, struct QuadEqParameters* params, struct QuadEqParameters* expected_roots)
-{
-    if (params->roots_number != expected_roots->roots_number ||
-        !is_equal(params->x1, expected_roots->x1) ||
-        !is_equal(params->x2, expected_roots->x2))
-    {
-        printf("Test #%d is failed:\n"
-                "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
-                "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
-                test_number,
-                params->a, params->b, params->c, params->x1, params->x2, params->roots_number,
-                expected_roots->x1, expected_roots->x2, expected_roots->roots_number);
-        return TEST_FAILED_ERROR;
-    }
-    else
-    {
-        printf("Test#%d is succeed\n", test_number);
-        return OK;
-    }
 }
 
 
@@ -147,7 +98,7 @@ bool is_equal(double x, double y)
 }
 
 
-ProgramStatus isfinite_check(double x)
+CodeStatus isfinite_check(double x)
 {
     if (isfinite(x))
         return OK;
@@ -162,7 +113,15 @@ bool is_zero(double x)
 }
 
 
-ProgramStatus print_roots(struct QuadEqParameters* roots)
+CodeStatus print_infinite_error(const char var[])
+{
+    printf("error:\n"
+          "value of variable %s is infinite", var);
+    return NUMBER_IS_INFINITE_ERROR;
+}
+
+
+void print_roots(struct QuadEqParameters* roots)
 {
     assert(roots != NULL);
 
@@ -176,38 +135,106 @@ ProgramStatus print_roots(struct QuadEqParameters* roots)
         case NO_ROOTS:
         {
             printf("This equation has no real roots\n");
-            return OK;
+            break;
         }
         case ONE_ROOT:
         {
             printf("This equation has only one real root: %.2lg\n", roots->x1);
-            return OK;
+            break;
         }
         case TWO_ROOTS:
         {
             printf("This equation has only two real roots: %.2lg; %.2lg\n", roots->x1, roots->x2);
-            return OK;
+            break;
         }
         case INFINITE_NUM_OF_ROOTS:
         {
             printf("This equation has an infinite number of real roots\n");
-            return OK;
+            break;
         }
         default:
         {
-            printf("Unknown error:\n"
-                   "In function print_roots(): variable number = %d is invalid\n", roots->roots_number);
-            return PRINT_ROOTS_ERROR_CODE;
+            printf("print_roots(): default situation");
+            break;
         }
     }
 }
 
 
-ProgramStatus solve_line_eq(struct QuadEqParameters* params)
+void print_test_result(TestStatus test_status, int test_number,
+                       const struct QuadEqParameters* params, struct QuadEqParameters* expected_roots)
+{
+    if (test_status == TEST_FAILED)
+    {
+        printf("Test #%d is failed:\n"
+                "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
+                "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
+                test_number,
+                params->a, params->b, params->c, params->x1, params->x2, params->roots_number,
+                expected_roots->x1, expected_roots->x2, expected_roots->roots_number);
+    }
+    else
+    {
+        printf("Test#%d is succeed\n", test_number);
+    }
+}
+
+
+CodeStatus run_all_tests()
+{
+    CodeStatus code_status = OK;
+    TestStatus test_status = TEST_SUCCEED;
+
+    const struct QuadEqParameters test_params[]
+    {
+        {0, 0, 0, 0, 0, INFINITE_NUM_OF_ROOTS},
+        {0, 0, 1, 0, 0, NO_ROOTS},
+        {0, 1, 0, 0, 0, ONE_ROOT},
+        {0, 2.32, -135.952, 58.6, 0, ONE_ROOT},
+        {1, 1, 1, 0, 0, NO_ROOTS},
+        {1, 4, 4, -2, 0, ONE_ROOT},
+        {1, -1, 0.25, 0.5, 0, ONE_ROOT},
+        {1, 2, -3, -3, 1, TWO_ROOTS},
+        {7.4, 2.1, -5.67, -1.0286554, 0.7448716, TWO_ROOTS},
+    };
+
+    for (int i = 0; i < 9; i++)
+    {
+        struct QuadEqParameters current_test = {test_params[i].a, test_params[i].b, test_params[i].c, 0, 0, NO_ROOTS};
+        code_status = run_test(&test_status, &test_params[i], &current_test);
+        if (code_status != OK)
+            return code_status;
+        print_test_result(test_status, i+1, &test_params[i], &current_test);
+    }
+
+    return code_status;
+}
+
+
+CodeStatus run_test(TestStatus* test_status, const struct QuadEqParameters* expected_roots,
+                    struct QuadEqParameters* params)
+{
+    CodeStatus code_status = solve_quad_eq(params);
+    if (code_status != OK)
+        return code_status;
+
+    if (params->roots_number != expected_roots->roots_number ||
+        !is_equal(params->x1, expected_roots->x1) ||
+        !is_equal(params->x2, expected_roots->x2))
+    {
+        *test_status = TEST_FAILED;
+    }
+    else
+        *test_status = TEST_SUCCEED;
+    return code_status;
+}
+
+
+CodeStatus solve_line_eq(struct QuadEqParameters* params)
 {
     assert(params != NULL);
 
-    ProgramStatus code_status = OK;
+    CodeStatus code_status = OK;
     if ((code_status = isfinite_check(params->b)) != OK)
         return print_infinite_error("b");
     if ((code_status = isfinite_check(params->c)) != OK)
@@ -237,11 +264,11 @@ ProgramStatus solve_line_eq(struct QuadEqParameters* params)
 }
 
 
-ProgramStatus solve_quad_eq(struct QuadEqParameters* params)
+CodeStatus solve_quad_eq(struct QuadEqParameters* params)
 {
     assert(params != NULL);
 
-    ProgramStatus code_status = OK;
+    CodeStatus code_status = OK;
     if ((code_status = isfinite_check(params->a)) != OK)
         return print_infinite_error("a");
     if ((code_status = isfinite_check(params->b)) != OK)
@@ -272,17 +299,4 @@ ProgramStatus solve_quad_eq(struct QuadEqParameters* params)
         params->roots_number = TWO_ROOTS;
         return code_status;
     }
-}
-
-
-ProgramStatus run_test(int test_number, struct QuadEqParameters* expected_roots)
-{
-    struct QuadEqParameters params = {expected_roots->a, expected_roots->b, expected_roots->c, 0, 0, NO_ROOTS};
-    ProgramStatus test_status = OK;
-    ProgramStatus code_status = solve_quad_eq(&params);
-    if (code_status != OK)
-        return code_status;
-
-    test_status = print_test_result(test_number, &params, expected_roots);
-    return test_status;
 }
