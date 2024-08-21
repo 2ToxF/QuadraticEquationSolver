@@ -12,7 +12,6 @@ enum TestStatus
 static bool is_equal(double x, double y);
 static void print_test_result(TestStatus tes_status, int test_number,
                               const struct QuadEqParameters* params, struct QuadEqParameters* expected_roots);
-//CodeStatus run_all_tests();
 static CodeStatus run_test(TestStatus* test_status, const struct QuadEqParameters* expected_roots,
                            struct QuadEqParameters* params);
 

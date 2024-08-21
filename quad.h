@@ -8,6 +8,11 @@ enum CodeStatus
     OK,
     NUMBER_IS_INFINITE_ERROR=1,
 };
+enum InputStatus
+{
+    EXIT,
+    CONTINUE,
+};
 enum RootsNumber
 {
     NO_ROOTS,
@@ -26,7 +31,7 @@ struct QuadEqParameters
     RootsNumber roots_number;
 };
 
-void input_coeff(double* var_adress, char var_char);
+InputStatus input_coeff(double* var_adress, char var_char);
 void print_roots(struct QuadEqParameters* roots);
 CodeStatus solve_quad_eq(struct QuadEqParameters* params);
 
