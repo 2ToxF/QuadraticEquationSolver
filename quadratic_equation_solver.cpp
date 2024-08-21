@@ -28,16 +28,11 @@ struct QuadEqParameters
     double x2;
     RootsNumber roots_number;
 };
-struct QuadEqRoots
-{
-    double x1;
-    double x2;
-    RootsNumber roots_number;
-};
 
-ProgramStatus call_tests();
+ProgramStatus run_all_tests();
 void clear_buffer();
 ProgramStatus print_infinite_error(const char var[]);
+ProgramStatus print_test_result(int test_number, struct QuadEqParameters* params, struct QuadEqParameters* expected_roots);
 void input_coeff(double* var_adress, char var_char);
 bool is_equal(double x, double y);
 ProgramStatus isfinite_check(double x);
@@ -45,13 +40,13 @@ bool is_zero(double x);
 ProgramStatus print_roots(struct QuadEqParameters* roots);
 ProgramStatus solve_line_eq(struct QuadEqParameters* params);
 ProgramStatus solve_quad_eq(struct QuadEqParameters* params);
-ProgramStatus test(int test_number, struct QuadEqParameters params, struct QuadEqRoots expected_roots);
+ProgramStatus run_test(int test_number, struct QuadEqParameters* params);
 
 int main()
 {
 #ifdef TEST
     ProgramStatus code_status = OK;
-    code_status = call_tests();
+    code_status = run_all_tests();
     return code_status;
 #else
     struct QuadEqParameters quad_eq_params = {};
@@ -72,39 +67,25 @@ int main()
 }
 
 
-ProgramStatus call_tests()
+ProgramStatus run_all_tests()
 {
-    const double INCORRECT_ROOT = 1000000;
-    const double UNCHANGABLE_ROOT = -1000000;
     ProgramStatus test_status = OK;
 
     struct QuadEqParameters test_params[]
     {
-        {0, 0, 0, UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {0, 0, 1, UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, ONE_ROOT},
-        {0, 1, 0, INCORRECT_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {0, 2.32, -135.952, INCORRECT_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {1, 1, 1, UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, ONE_ROOT},
-        {1, 4, 4, INCORRECT_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {1, -1, 0.25, INCORRECT_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {1, 2, -3, INCORRECT_ROOT, INCORRECT_ROOT, NO_ROOTS},
-        {7.4, 2.1, -5.67, INCORRECT_ROOT, INCORRECT_ROOT, NO_ROOTS},
-    };
-    struct QuadEqRoots expected_roots[]
-    {
-        {UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, INFINITE_NUM_OF_ROOTS},
-        {UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {0, UNCHANGABLE_ROOT, ONE_ROOT},
-        {58.6, UNCHANGABLE_ROOT, ONE_ROOT},
-        {UNCHANGABLE_ROOT, UNCHANGABLE_ROOT, NO_ROOTS},
-        {-2, UNCHANGABLE_ROOT, ONE_ROOT},
-        {0.5, UNCHANGABLE_ROOT, ONE_ROOT},
-        {-3, 1, TWO_ROOTS},
-        {-1.0286554, 0.7448716, TWO_ROOTS},
+        {0, 0, 0, 0, 0, INFINITE_NUM_OF_ROOTS},
+        {0, 0, 1, 0, 0, NO_ROOTS},
+        {0, 1, 0, 0, 0, ONE_ROOT},
+        {0, 2.32, -135.952, 58.6, 0, ONE_ROOT},
+        {1, 1, 1, 0, 0, NO_ROOTS},
+        {1, 4, 4, -2, 0, ONE_ROOT},
+        {1, -1, 0.25, 0.5, 0, ONE_ROOT},
+        {1, 2, -3, -3, 1, TWO_ROOTS},
+        {7.4, 2.1, -5.67, -1.0286554, 0.7448716, TWO_ROOTS},
     };
 
     for (int i = 0; i < 9; i++)
-        test_status = test(i+1, test_params[i], expected_roots[i]);
+        test_status = run_test(i+1, &test_params[i]);
     return test_status;
 }
 
@@ -114,6 +95,28 @@ ProgramStatus print_infinite_error(const char var[])
     printf("error:\n"
           "value of variable %s is infinite", var);
     return NUMBER_IS_INFINITE_ERROR;
+}
+
+
+ProgramStatus print_test_result(int test_number, struct QuadEqParameters* params, struct QuadEqParameters* expected_roots)
+{
+    if (params->roots_number != expected_roots->roots_number ||
+        !is_equal(params->x1, expected_roots->x1) ||
+        !is_equal(params->x2, expected_roots->x2))
+    {
+        printf("Test #%d is failed:\n"
+                "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
+                "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
+                test_number,
+                params->a, params->b, params->c, params->x1, params->x2, params->roots_number,
+                expected_roots->x1, expected_roots->x2, expected_roots->roots_number);
+        return TEST_FAILED_ERROR;
+    }
+    else
+    {
+        printf("Test#%d is succeed\n", test_number);
+        return OK;
+    }
 }
 
 
@@ -272,25 +275,14 @@ ProgramStatus solve_quad_eq(struct QuadEqParameters* params)
 }
 
 
-ProgramStatus test(int test_number, struct QuadEqParameters params, struct QuadEqRoots expected_roots)
+ProgramStatus run_test(int test_number, struct QuadEqParameters* expected_roots)
 {
+    struct QuadEqParameters params = {expected_roots->a, expected_roots->b, expected_roots->c, 0, 0, NO_ROOTS};
     ProgramStatus test_status = OK;
     ProgramStatus code_status = solve_quad_eq(&params);
     if (code_status != OK)
         return code_status;
 
-    if (params.roots_number != expected_roots.roots_number ||
-        !is_equal(params.x1, expected_roots.x1) ||
-        !is_equal(params.x2, expected_roots.x2))
-    {
-        printf("Test #%d is failed:\n"
-                "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
-                "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
-                test_number,
-                params.a, params.b, params.c, params.x1, params.x2, params.roots_number,
-                expected_roots.x1, expected_roots.x2, expected_roots.roots_number);
-        test_status = TEST_FAILED_ERROR;
-    }
-
+    test_status = print_test_result(test_number, &params, expected_roots);
     return test_status;
 }
