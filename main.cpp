@@ -1,28 +1,7 @@
-#include <stdio.h>
-#include "tests.h"
-#include "quad.h"
+#include "cmd_processing.h"
 
-//#define TEST
-
-int main()
+int main(int argc, const char* argv[])
 {
-#ifdef TEST
-    CodeStatus code_status = OK;
-    code_status = run_all_tests();
-    return code_status;
-#else
-    struct QuadEqParameters quad_eq_params = {};
-    CodeStatus code_status = OK;
-
-    printf("# Enter the coefficients of quadratic equation (or \"exit\" to exit the program):\n");
-
-    if (input_all_coeffs(&quad_eq_params) == EXIT)
-        return code_status;
-
-    code_status = solve_quad_eq(&quad_eq_params);
-    if (code_status != OK)
-        return code_status;
-    print_roots(&quad_eq_params);
-    return code_status;
-#endif
+    cmdOption option = cmd_read(argc, argv);
+    return run_program(option, argv);
 }

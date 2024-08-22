@@ -6,7 +6,8 @@
 enum CodeStatus
 {
     OK,
-    NUMBER_IS_INFINITE_ERROR=1,
+    NUMBER_IS_INFINITE_ERROR,
+    PROGRAM_NOT_STARTED=1,
 };
 enum InputStatus
 {
