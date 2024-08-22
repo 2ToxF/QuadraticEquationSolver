@@ -3,6 +3,14 @@
 #include <string.h>
 #include "io.h"
 
+#define printred(text, ...) printf("\033[0;31m" text "\033[0;37m", ## __VA_ARGS__)
+#define printgreen(text, ...) printf("\033[0;32m" text "\033[0;37m", ## __VA_ARGS__)
+#define printyellow(text, ...) printf("\033[0;33m" text "\033[0;37m", ## __VA_ARGS__)
+#define printblue(text, ...) printf("\033[0;34m" text "\033[0;37m", ## __VA_ARGS__)
+#define printpurple(text, ...) printf("\033[0;35m" text "\033[0;37m", ## __VA_ARGS__)
+#define printcyan(text, ...) printf("\033[0;36m" text "\033[0;37m", ## __VA_ARGS__)
+#define printwhite(text, ...) printf("\033[0;37m" text "\033[0;37m", ## __VA_ARGS__)
+
 const int MAX_INPUT_LEN = 25;
 const char EXIT_STRING[] = "exit";
 
@@ -32,7 +40,7 @@ static InputStatus input_coeff(double* var_adress, char var_char)
 {
     assert(var_adress != NULL);
 
-    printf("# %c = ", var_char);
+    printblue("# %c = ", var_char);
 
     while (scanf("%lf", var_adress) != 1)
     {
@@ -42,8 +50,8 @@ static InputStatus input_coeff(double* var_adress, char var_char)
             return EXIT;
         clear_buffer();
 
-        printf("Invalid value, try again\n");
-        printf("# %c = ", var_char);
+        printred("Invalid value, try again\n");
+        printblue("# %c = ", var_char);
     }
 
     clear_buffer();
@@ -58,23 +66,23 @@ void print_code_status(CodeStatus status)
     {
         case OK:
         {
-            printf("\nProgram was done without errors\n");
+            printgreen("\nProgram was done without errors\n");
             break;
         }
         case NUMBER_IS_INFINITE_ERROR:
         {
-            printf("\nProgram wasn't done because of error\nerror: NUMBER_IS_INFINITE_ERROR\n");
+            printred("\nProgram wasn't done because of error\nerror: NUMBER_IS_INFINITE_ERROR\n");
             break;
         }
         case PROGRAM_NOT_STARTED:
         {
-            printf("Program wasn't started");
+            printyellow("Program wasn't started");
             break;
         }
 
         default:
         {
-            printf("\nProgram wasn't done because of unknown error\n");
+            printred("\nProgram wasn't done because of unknown error\n");
             break;
         }
     }
@@ -83,7 +91,7 @@ void print_code_status(CodeStatus status)
 
 void print_help()
 {
-    printf("\nUsage: ./qe_solver.exe [option]  ||  make run\n"
+    printblue("\nUsage: ./qe_solver.exe [option]  ||  make run\n"
             "Options:\n"
             "    --tests                      Run tests for quadratic_equation_solver\n"
             "    --solve                      Run quadratic_equation_solver\n");
@@ -92,8 +100,8 @@ void print_help()
 
 CodeStatus print_infinite_error(const char var[])
 {
-    printf("error:\n"
-          "value of variable %s is infinite", var);
+    printred("error:\n"
+             "value of variable %s is infinite", var);
     return NUMBER_IS_INFINITE_ERROR;
 }
 
@@ -111,27 +119,27 @@ void print_roots(struct QuadEqParameters* roots)
     {
         case NO_ROOTS:
         {
-            printf("This equation has no real roots\n");
+            printpurple("This equation has no real roots\n");
             break;
         }
         case ONE_ROOT:
         {
-            printf("This equation has only one real root: %.2lg\n", roots->x1);
+            printpurple("This equation has only one real root: %.2lg\n", roots->x1);
             break;
         }
         case TWO_ROOTS:
         {
-            printf("This equation has only two real roots: %.2lg; %.2lg\n", roots->x1, roots->x2);
+            printpurple("This equation has only two real roots: %.2lg; %.2lg\n", roots->x1, roots->x2);
             break;
         }
         case INFINITE_NUM_OF_ROOTS:
         {
-            printf("This equation has an infinite number of real roots\n");
+            printpurple("This equation has an infinite number of real roots\n");
             break;
         }
         default:
         {
-            printf("print_roots(): default situation");
+            printred("print_roots(): default situation");
             break;
         }
     }
@@ -143,15 +151,15 @@ void print_test_result(TestStatus test_status, int test_number,
 {
     if (test_status == TEST_FAILED)
     {
-        printf("Test #%d is failed:\n"
-                "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
-                "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
-                test_number,
-                params->a, params->b, params->c, params->x1, params->x2, params->roots_number,
-                expected_roots->x1, expected_roots->x2, expected_roots->roots_number);
+        printred("Test #%d is failed:\n"
+                 "a = %lg, b = %lg, c = %lg, x1 = %.7lg, x2 = %.7lg, roots_number = %d\n"
+                 "Expected: x1 = %.7lg, x2 = %.7lg, roots_number = %d\n\n",
+                 test_number,
+                 params->a, params->b, params->c, params->x1, params->x2, params->roots_number,
+                 expected_roots->x1, expected_roots->x2, expected_roots->roots_number);
     }
     else
     {
-        printf("Test#%d is succeed\n", test_number);
+        printgreen("Test#%d is succeed\n", test_number);
     }
 }
