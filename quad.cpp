@@ -1,60 +1,13 @@
-#include <stdio.h>
-#include <math.h>
 #include <assert.h>
-#include <cstring>
-#include "tests.h"
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include "io.h"
 #include "quad.h"
+#include "tests.h"
 
-const int MAX_INPUT_LEN = 25;
-const char EXIT_STRING[] = "exit";
-
-static void clear_buffer();
 static CodeStatus isfinite_check(double x);
-static bool is_zero(double x);
-static CodeStatus print_infinite_error(const char var[]);
 static CodeStatus solve_line_eq(struct QuadEqParameters* params);
-
-
-static void clear_buffer()
-{
-    while (getchar() != '\n') {}
-}
-
-
-InputStatus input_all_coeffs(struct QuadEqParameters* input_params)
-{
-    if (input_coeff(&input_params->a, 'a') == EXIT)
-        return EXIT;
-    if (input_coeff(&input_params->b, 'b') == EXIT)
-        return EXIT;
-    if (input_coeff(&input_params->c, 'c') == EXIT)
-        return EXIT;
-    return CONTINUE;
-}
-
-
-InputStatus input_coeff(double* var_adress, char var_char)
-{
-    assert(var_adress != NULL);
-
-    printf("# %c = ", var_char);
-
-    while (scanf("%lf", var_adress) != 1)
-    {
-        char input_string[MAX_INPUT_LEN] = {};
-        scanf("%s", input_string);
-        if (strcmp(input_string, EXIT_STRING) == 0)
-            return EXIT;
-        clear_buffer();
-
-        printf("Invalid value, try again\n");
-        printf("# %c = ", var_char);
-    }
-
-    clear_buffer();
-
-    return CONTINUE;
-}
 
 
 static CodeStatus isfinite_check(double x)
@@ -66,57 +19,27 @@ static CodeStatus isfinite_check(double x)
 }
 
 
-static bool is_zero(double x)
+bool is_zero(double x)
 {
     return abs(x) <= 1E-7;
 }
 
 
-static CodeStatus print_infinite_error(const char var[])
+CodeStatus run_main_solve()
 {
-    printf("error:\n"
-          "value of variable %s is infinite", var);
-    return NUMBER_IS_INFINITE_ERROR;
-}
+    struct QuadEqParameters quad_eq_params = {};
+    CodeStatus code_status = OK;
 
+    printf("# Enter the coefficients of quadratic equation (or \"exit\" to exit the program):\n");
 
-void print_roots(struct QuadEqParameters* roots)
-{
-    assert(roots != NULL);
+    if (input_all_coeffs(&quad_eq_params) == EXIT)
+        return code_status;
 
-    if (is_zero(roots->x1))
-        roots->x1 = 0.0;
-    if (is_zero(roots->x2))
-        roots->x2 = 0.0;
-
-    switch (roots->roots_number)
-    {
-        case NO_ROOTS:
-        {
-            printf("This equation has no real roots\n");
-            break;
-        }
-        case ONE_ROOT:
-        {
-            printf("This equation has only one real root: %.2lg\n", roots->x1);
-            break;
-        }
-        case TWO_ROOTS:
-        {
-            printf("This equation has only two real roots: %.2lg; %.2lg\n", roots->x1, roots->x2);
-            break;
-        }
-        case INFINITE_NUM_OF_ROOTS:
-        {
-            printf("This equation has an infinite number of real roots\n");
-            break;
-        }
-        default:
-        {
-            printf("print_roots(): default situation");
-            break;
-        }
-    }
+    code_status = solve_quad_eq(&quad_eq_params);
+    if (code_status != OK)
+        return code_status;
+    print_roots(&quad_eq_params);
+    return code_status;
 }
 
 
