@@ -29,7 +29,7 @@ CodeStatus run_program(CmdOption option)
 
     else
     {
-        printf("error: unknown option");
+        PRINTRED("error: unknown option");
         print_help();
         code_status = PROGRAM_NOT_STARTED;
     }

@@ -36,7 +36,7 @@ CodeStatus run_all_tests()
         {7.4, 2.1,    -5.67,  -1.0286554, 0.7448716, TWO_ROOTS},
     };
 
-    const int test_count = sizeof test_params / sizeof test_params[0];
+    const int test_count = sizeof (test_params) / sizeof (QuadEqParameters);
 
     for (int i = 0; i < test_count; i++)
     {
