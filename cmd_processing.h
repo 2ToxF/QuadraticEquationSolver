@@ -3,7 +3,7 @@
 
 #include "quad.h"
 
-enum cmdOption
+enum CmdOption
 {
     TEST,
     SOLVE,
@@ -11,7 +11,6 @@ enum cmdOption
     UNKNOWN,
 };
 
-cmdOption cmd_read(int argc, const char* argv[]);
-CodeStatus run_program(cmdOption option, const char* argv[]);
+CmdOption cmd_read(int options_number, const char* options[]);
 
 #endif
