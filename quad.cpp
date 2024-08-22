@@ -1,57 +1,44 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
+#include <cstring>
 #include "tests.h"
 #include "quad.h"
 
-static InputStatus clear_buffer();
+static void clear_buffer();
 static CodeStatus isfinite_check(double x);
 static bool is_zero(double x);
 static CodeStatus print_infinite_error(const char var[]);
 static CodeStatus solve_line_eq(struct QuadEqParameters* params);
 
 
-static InputStatus clear_buffer()
+static void clear_buffer()
 {
-    InputStatus input_status = EXIT;
-    char input_string[100] = {};
-    const char exit_string[5] = "exit";
-
-    int i = 0;
-    while ((input_string[i] = (char) getchar()) != '\n')
-        i++;
-
-    if (i == 4)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (input_string[j] != exit_string[j])
-                input_status = CONTINUE;
-        }
-    }
-    else
-        input_status = CONTINUE;
-
-    return input_status;
+    while (getchar() != '\n') {}
 }
 
 
 InputStatus input_coeff(double* var_adress, char var_char)
 {
+    const int MAX_INPUT_LEN = 25;
+    const char exit_string[] = "exit";
     assert(var_adress != NULL);
 
     printf("# %c = ", var_char);
 
     while (scanf("%lf", var_adress) != 1)
     {
-        if (clear_buffer() == EXIT)
-        {
-            printf("End of the program");
+        char input_string[MAX_INPUT_LEN] = {};
+        scanf("%s", input_string);
+        if (strcmp(input_string, exit_string) == 0)
             return EXIT;
-        }
+        clear_buffer();
+
         printf("Invalid value, try again\n");
         printf("# %c = ", var_char);
     }
+
+    clear_buffer();
 
     return CONTINUE;
 }
