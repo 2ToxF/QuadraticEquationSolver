@@ -31,6 +31,7 @@ struct QuadEqParameters
     RootsNumber roots_number;
 };
 
+InputStatus input_all_coeffs(struct QuadEqParameters* input_params);
 InputStatus input_coeff(double* var_adress, char var_char);
 void print_roots(struct QuadEqParameters* roots);
 CodeStatus solve_quad_eq(struct QuadEqParameters* params);

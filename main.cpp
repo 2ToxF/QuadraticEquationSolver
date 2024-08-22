@@ -15,11 +15,8 @@ int main()
     CodeStatus code_status = OK;
 
     printf("# Enter the coefficients of quadratic equation (or \"exit\" to exit the program):\n");
-    if (input_coeff(&quad_eq_params.a, 'a') == EXIT)
-        return code_status;
-    if (input_coeff(&quad_eq_params.b, 'b') == EXIT)
-        return code_status;
-    if (input_coeff(&quad_eq_params.c, 'c') == EXIT)
+
+    if (input_all_coeffs(&quad_eq_params) == EXIT)
         return code_status;
 
     code_status = solve_quad_eq(&quad_eq_params);

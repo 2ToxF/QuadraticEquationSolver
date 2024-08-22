@@ -5,6 +5,9 @@
 #include "tests.h"
 #include "quad.h"
 
+const int MAX_INPUT_LEN = 25;
+const char EXIT_STRING[] = "exit";
+
 static void clear_buffer();
 static CodeStatus isfinite_check(double x);
 static bool is_zero(double x);
@@ -18,10 +21,20 @@ static void clear_buffer()
 }
 
 
+InputStatus input_all_coeffs(struct QuadEqParameters* input_params)
+{
+    if (input_coeff(&input_params->a, 'a') == EXIT)
+        return EXIT;
+    if (input_coeff(&input_params->b, 'b') == EXIT)
+        return EXIT;
+    if (input_coeff(&input_params->c, 'c') == EXIT)
+        return EXIT;
+    return CONTINUE;
+}
+
+
 InputStatus input_coeff(double* var_adress, char var_char)
 {
-    const int MAX_INPUT_LEN = 25;
-    const char exit_string[] = "exit";
     assert(var_adress != NULL);
 
     printf("# %c = ", var_char);
@@ -30,7 +43,7 @@ InputStatus input_coeff(double* var_adress, char var_char)
     {
         char input_string[MAX_INPUT_LEN] = {};
         scanf("%s", input_string);
-        if (strcmp(input_string, exit_string) == 0)
+        if (strcmp(input_string, EXIT_STRING) == 0)
             return EXIT;
         clear_buffer();
 
