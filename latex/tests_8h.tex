@@ -1,0 +1,65 @@
+\doxysection{include/tests.h File Reference}
+\hypertarget{tests_8h}{}\label{tests_8h}\index{include/tests.h@{include/tests.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}quad.\+h"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}} \{ \mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3a1f9c8034a09004c5f100955d4f4f81e1}{TEST\+\_\+\+SUCCEED}}
+, \mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3a983ad813fec232f9af0d26f1bb43caa5}{TEST\+\_\+\+FAILED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Result of the current test. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} \mbox{\hyperlink{tests_8h_ab6b44e7c389587f4613ad577b62ebc45}{run\+\_\+all\+\_\+tests}} ()
+\item 
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} \mbox{\hyperlink{tests_8h_a324a67189e63ea87224e9bebc7c0d57c}{run\+\_\+main\+\_\+test}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with code for testing main program 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}\index{tests.h@{tests.h}!TestStatus@{TestStatus}}
+\index{TestStatus@{TestStatus}!tests.h@{tests.h}}
+\doxysubsubsection{\texorpdfstring{TestStatus}{TestStatus}}
+{\footnotesize\ttfamily \label{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3} 
+enum \mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}}}
+
+
+
+Result of the current test. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST\_SUCCEED@{TEST\_SUCCEED}!tests.h@{tests.h}}\index{tests.h@{tests.h}!TEST\_SUCCEED@{TEST\_SUCCEED}}}\Hypertarget{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3a1f9c8034a09004c5f100955d4f4f81e1}\label{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3} 
+TEST\+\_\+\+SUCCEED&Test successfully passed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST\_FAILED@{TEST\_FAILED}!tests.h@{tests.h}}\index{tests.h@{tests.h}!TEST\_FAILED@{TEST\_FAILED}}}\Hypertarget{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3a983ad813fec232f9af0d26f1bb43caa5}\label{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3} 
+TEST\+\_\+\+FAILED&Test failed. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tests_8h_ab6b44e7c389587f4613ad577b62ebc45}\index{tests.h@{tests.h}!run\_all\_tests@{run\_all\_tests}}
+\index{run\_all\_tests@{run\_all\_tests}!tests.h@{tests.h}}
+\doxysubsubsection{\texorpdfstring{run\_all\_tests()}{run\_all\_tests()}}
+{\footnotesize\ttfamily \label{tests_8h_ab6b44e7c389587f4613ad577b62ebc45} 
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} run\+\_\+all\+\_\+tests (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Run the sequence of test \begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
+\Hypertarget{tests_8h_a324a67189e63ea87224e9bebc7c0d57c}\index{tests.h@{tests.h}!run\_main\_test@{run\_main\_test}}
+\index{run\_main\_test@{run\_main\_test}!tests.h@{tests.h}}
+\doxysubsubsection{\texorpdfstring{run\_main\_test()}{run\_main\_test()}}
+{\footnotesize\ttfamily \label{tests_8h_a324a67189e63ea87224e9bebc7c0d57c} 
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} run\+\_\+main\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Starts the test program \begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}

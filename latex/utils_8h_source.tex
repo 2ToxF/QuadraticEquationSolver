@@ -1,0 +1,34 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{include/utils.h@{include/utils.h}}
+\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ UTILS\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ UTILS\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{io_8h}{io.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quad_8h}{quad.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ASSERT(assertion)\ if\ (!assertion)\ \(\backslash\)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PRINTRED("{}\(\backslash\)033[0;31mAssertion\ failed:\(\backslash\)n"{}\ \(\backslash\)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}file\ \%s:\ \ \ \ func\ \%s:\ \ \ \ line\ \%d:\(\backslash\)n"{},\ \(\backslash\)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_FILE\_\_,\ \_\_PRETTY\_FUNCTION\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \(\backslash\)}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_afa847549e9dc6e4f49f651623bc456dc}{clear\_buffer}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a83bbe2656669680d4cd4c5d3eb6a27f2}{file\_open}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ file\_name[],\ FILE**\ file\_pointer);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{CodeStatus}}\ \mbox{\hyperlink{utils_8h_a76ad066d377100c668c6049a3d0ee59d}{isfinite\_check}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a8fbdf2aaa8257131a289c10f796ec25f}{is\_equal}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_ab9b65caeaf434e3a4cd7f65cf5db2e59}{is\_zero}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_afe4a5bd09f2c05b723590b2412179646}{swap}}(\textcolor{keywordtype}{void}*\ x,\ \textcolor{keywordtype}{void}*\ y,\ \textcolor{keywordtype}{size\_t}\ elem\_size);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

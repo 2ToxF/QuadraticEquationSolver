@@ -1,3 +1,8 @@
+/*!
+    \file
+    File with code for testing main program
+*/
+
 #ifndef TESTS_H
 #define TESTS_H
 

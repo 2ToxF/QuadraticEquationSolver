@@ -1,6 +1,6 @@
+#include <math.h>
 #include <mem.h>
 #include "io.h"
-#include "math.h"
 #include "utils.h"
 
 

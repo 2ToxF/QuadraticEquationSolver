@@ -1,17 +1,53 @@
-FLAGS := -o QuadSolver -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC
-FILES := cmd_processing.cpp io.cpp main.cpp quad.cpp tests.cpp utils.cpp
+CC := g++
+DED_FLAGS := -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code \
+	-Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra \
+	-Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security \
+	-Wformat=2 -Wignored-qualifiers -Wlogical-op -Wno-missing-field-initializers -Wnon-virtual-dtor \
+	-Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel \
+	-Wtype-limits -Wwrite-strings -Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
 
-all: $(FILES)
-	g++ $^ $(FLAGS)
+SRC_DIR := source
+INC_DIR := include
+OBJ_DIR := object
+BIN_DIR := bin
 
-run:
-	./QuadSolver.exe
+SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
+INCLUDES := $(wildcard $(INC_DIR)/*.h)
+OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+EXE := $(BIN_DIR)/QuadSolver.exe
+
+all: $(OBJ_DIR) $(BIN_DIR) $(EXE)
+
+$(BIN_DIR):
+	@mkdir $@
+
+$(OBJ_DIR):
+	@mkdir $@
+
+$(EXE): $(OBJECTS)
+	@$(CC) $(OBJECTS) -o $@
+
+$(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(CC) -c $(DED_FLAGS) -I$(INC_DIR) $< -o $@
+
+run: $(EXE)
+	$(EXE)
 
 run_help:
-	./QuadSolver.exe --help
+	$(EXE) --help
 
 run_solve:
-	./QuadSolver.exe --solve
+	$(EXE) --solve
 
 run_tests:
-	./QuadSolver.exe --tests
+	$(EXE) --tests
+
+clean_build:
+	rm $(BIN_DIR)/*.exe
+
+clean_obj:
+	rm $(OBJ_DIR)/*.o
+
+clean_all:
+	rm $(BIN_DIR)/*.exe
+	rm $(OBJ_DIR)/*.o

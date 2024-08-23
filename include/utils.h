@@ -1,3 +1,8 @@
+/*!
+    \file
+    File with utilities
+*/
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -7,7 +12,7 @@
 /// Assert with red printing and showing the place where the issue was found
 #define ASSERT(assertion) if (!assertion) \
                           { \
-                              PRINTRED("\033[0;31m Assertion failed:\n" \
+                              PRINTRED("\033[0;31mAssertion failed:\n" \
                                        "file %s:    func %s:    line %d:\n", \
                                        __FILE__, __PRETTY_FUNCTION__, __LINE__); \
                                        exit(EXIT_FAILURE); \

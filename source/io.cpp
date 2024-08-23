@@ -76,10 +76,18 @@ void print_code_status(CodeStatus status)
 
 void print_help()
 {
-    PRINTBLUE("\nUsage: ./qe_solver.exe [option]  ||  make run\n"
+    PRINTBLUE("\nUsage:\n"
+            "1) .\\bin\\QuadSolver.exe [option]\n"
             "Options:\n"
             "    --tests                      Run tests for quadratic_equation_solver\n"
-            "    --solve                      Run quadratic_equation_solver\n");
+            "    --solve                      Run quadratic_equation_solver\n"
+            "    --help                       Print hint with available commands\n"
+            "\n"
+            "2) make run[option]\n"
+            "Options:\n"
+            "    _tests                       Run tests for quadratic_equation_solver\n"
+            "    _solve                       Run quadratic_equation_solver\n"
+            "    _help                        Print hint with available commands\n");
 }
 
 
