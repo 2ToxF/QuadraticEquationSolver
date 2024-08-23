@@ -66,12 +66,21 @@ void print_code_status(CodeStatus status)
             PRINTRED("\n### Program wasn't done because of error\nerror: NUMBER_IS_INFINITE_ERROR ###\n");
             break;
         }
+        case FILE_NOT_OPENED_ERROR:
+        {
+            PRINTRED("\n### Program wasn't done because of error\nerror: FILE_NOT_OPENED_ERROR ###\n");
+            break;
+        }
+        case NULL_FILE_INFO:
+        {
+            PRINTRED("\n### Program wasn't done because of error\nerror: FILE_NOT_OPENED_ERROR ###\n");
+            break;
+        }
         case PROGRAM_NOT_STARTED:
         {
             PRINTYELLOW("\n### Program wasn't started ###\n");
             break;
         }
-
         default:
         {
             PRINTRED("\n### Program wasn't done because of unknown error ###\n");
@@ -116,12 +125,12 @@ void print_roots(struct QuadEqParameters* roots)
         }
         case ONE_ROOT:
         {
-            PRINTPURPLE("This equation has only one real root: %.2lg\n", roots->x1);
+            PRINTPURPLE("This equation has only one real root: %lg\n", roots->x1);
             break;
         }
         case TWO_ROOTS:
         {
-            PRINTPURPLE("This equation has only two real roots: %.2lg; %.2lg\n", roots->x1, roots->x2);
+            PRINTPURPLE("This equation has only two real roots: %lg; %lg\n", roots->x1, roots->x2);
             break;
         }
         case INFINITE_NUM_OF_ROOTS:
@@ -139,7 +148,7 @@ void print_roots(struct QuadEqParameters* roots)
 
 
 void print_test_result(TestStatus test_status, int test_number,
-                       const struct QuadEqParameters* params, struct QuadEqParameters* expected_roots)
+                       struct QuadEqParameters* expected_roots, const struct QuadEqParameters* params)
 {
     if (test_status == TEST_FAILED)
     {
@@ -152,6 +161,6 @@ void print_test_result(TestStatus test_status, int test_number,
     }
     else
     {
-        PRINTGREEN("Test#%d is succeed\n", test_number);
+        PRINTGREEN("Test #%d is passed\n", test_number);
     }
 }

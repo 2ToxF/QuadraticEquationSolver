@@ -109,6 +109,12 @@ CodeStatus solve_quad_eq(struct QuadEqParameters* params)
     {
         params->x1 = (-b - sqrt(discr))/(2*a);
         params->x2 = (-b + sqrt(discr))/(2*a);
+        if (params->x1 > params->x2)
+        {
+            double var_for_change = params->x2;
+            params->x2 = params->x1;
+            params->x1 = var_for_change;
+        }
         params->roots_number = TWO_ROOTS;
         return code_status;
     }

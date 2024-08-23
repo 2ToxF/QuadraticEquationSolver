@@ -7,6 +7,8 @@ enum CodeStatus
 {
     OK,
     NUMBER_IS_INFINITE_ERROR,
+    FILE_NOT_OPENED_ERROR,
+    NULL_FILE_INFO,
     PROGRAM_NOT_STARTED,
 };
 enum InputStatus
