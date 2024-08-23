@@ -1,8 +1,6 @@
 #ifndef CMD_PROCESSING_H
 #define CMD_PROCESSING_H
 
-#include "quad.h"
-
 enum CmdOption
 {
     TEST,

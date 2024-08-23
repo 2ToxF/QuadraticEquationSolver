@@ -5,24 +5,9 @@
 #include "io.h"
 #include "quad.h"
 #include "tests.h"
+#include "utils.h"
 
-static CodeStatus isfinite_check(double x);
 static CodeStatus solve_line_eq(struct QuadEqParameters* params);
-
-
-static CodeStatus isfinite_check(double x)
-{
-    if (isfinite(x))
-        return OK;
-    else
-        return NUMBER_IS_INFINITE_ERROR;
-}
-
-
-bool is_zero(double x)
-{
-    return abs(x) <= 1E-7;
-}
 
 
 CodeStatus run_main_solve()
@@ -48,10 +33,10 @@ static CodeStatus solve_line_eq(struct QuadEqParameters* params)
     assert(params != NULL);
 
     CodeStatus code_status = OK;
-    if ((code_status = isfinite_check(params->b)) != OK)
-        return print_infinite_error("b");
-    if ((code_status = isfinite_check(params->c)) != OK)
-        return print_infinite_error("c");
+    if ((code_status = assert_isfinite(params->b, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
+    if ((code_status = assert_isfinite(params->c, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
 
     double b = params->b, c = params->c;
 
@@ -82,12 +67,12 @@ CodeStatus solve_quad_eq(struct QuadEqParameters* params)
     assert(params != NULL);
 
     CodeStatus code_status = OK;
-    if ((code_status = isfinite_check(params->a)) != OK)
-        return print_infinite_error("a");
-    if ((code_status = isfinite_check(params->b)) != OK)
-        return print_infinite_error("b");
-    if ((code_status = isfinite_check(params->c)) != OK)
-        return print_infinite_error("c");
+    if ((code_status = assert_isfinite(params->a, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
+    if ((code_status = assert_isfinite(params->b, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
+    if ((code_status = assert_isfinite(params->c, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
 
     double a = params->a, b = params->b, c = params->c;
 

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "io.h"
+#include "utils.h"
 
 const int MAX_INPUT_LEN = 25;
 const char EXIT_STRING[] = "exit";
@@ -63,17 +64,12 @@ void print_code_status(CodeStatus status)
         }
         case NUMBER_IS_INFINITE_ERROR:
         {
-            PRINTRED("\n### Program wasn't done because of error\nerror: NUMBER_IS_INFINITE_ERROR ###\n");
+            PRINTRED("\n### Program wasn't done because of error###\n### error: NUMBER_IS_INFINITE_ERROR ###\n");
             break;
         }
         case FILE_NOT_OPENED_ERROR:
         {
-            PRINTRED("\n### Program wasn't done because of error\nerror: FILE_NOT_OPENED_ERROR ###\n");
-            break;
-        }
-        case NULL_FILE_INFO:
-        {
-            PRINTRED("\n### Program wasn't done because of error\nerror: FILE_NOT_OPENED_ERROR ###\n");
+            PRINTRED("\n### Program wasn't done because of error###\n### error: FILE_NOT_OPENED_ERROR ###\n");
             break;
         }
         case PROGRAM_NOT_STARTED:
@@ -96,14 +92,6 @@ void print_help()
             "Options:\n"
             "    --tests                      Run tests for quadratic_equation_solver\n"
             "    --solve                      Run quadratic_equation_solver\n");
-}
-
-
-CodeStatus print_infinite_error(const char var[])
-{
-    PRINTRED("error:\n"
-             "value of variable %s is infinite", var);
-    return NUMBER_IS_INFINITE_ERROR;
 }
 
 

@@ -3,16 +3,12 @@
 #include "io.h"
 #include "quad.h"
 #include "tests.h"
+#include "utils.h"
 
-static bool is_equal(double x, double y);
+const char TESTS_FILE_NAME[] = "tests.txt";
+
 static CodeStatus run_test(TestStatus* test_status, const struct QuadEqParameters* expected_roots,
                            struct QuadEqParameters* params);
-
-
-static bool is_equal(double x, double y)
-{
-    return abs(x-y) <= 1E-7;
-}
 
 
 CodeStatus run_all_tests()
@@ -20,30 +16,22 @@ CodeStatus run_all_tests()
     CodeStatus code_status = OK;
     TestStatus test_status = TEST_SUCCEED;
 
-    const char tests_file_name[] = "tests.txt";
-    FILE* tests_file = fopen(tests_file_name, "r");
-    if (tests_file == NULL)
-    {
-        PRINTRED("error:\n"
-                 "run_all_tests(): FILE_NOT_OPENED_ERROR");
-        return FILE_NOT_OPENED_ERROR;
-    }
+    FILE* tests_file = NULL;
+    if ((code_status = file_open(TESTS_FILE_NAME, &tests_file, __FILE__, __FUNCTION__, __LINE__)) != OK)
+        return code_status;
 
     int succeed_test_count = 0;
     int test_count = 0;
     struct QuadEqParameters expected_params = {};
-    int temp_roots_number = 0;
 
     while (fscanf(tests_file, " %lf | %lf | %lf | %lf | %lf | %d \n",
                   &expected_params.a, &expected_params.b, &expected_params.c,
                   &expected_params.x1, &expected_params.x2,
-                  &temp_roots_number) != EOF)
+                  (int*) &expected_params.roots_number) != EOF)
     {
-        expected_params.roots_number = (RootsNumber) temp_roots_number;
         struct QuadEqParameters current_test = {expected_params.a, expected_params.b, expected_params.c, 0, 0, NO_ROOTS};
 
-        code_status = run_test(&test_status, &expected_params, &current_test);
-        if (code_status != OK)
+        if ((code_status = run_test(&test_status, &expected_params, &current_test)) != OK)
             return code_status;
 
         if (test_status == TEST_SUCCEED)

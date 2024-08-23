@@ -8,7 +8,6 @@ enum CodeStatus
     OK,
     NUMBER_IS_INFINITE_ERROR,
     FILE_NOT_OPENED_ERROR,
-    NULL_FILE_INFO,
     PROGRAM_NOT_STARTED,
 };
 enum InputStatus
@@ -34,7 +33,6 @@ struct QuadEqParameters
     RootsNumber roots_number;
 };
 
-bool is_zero(double x);
 CodeStatus run_main_solve();
 CodeStatus solve_quad_eq(struct QuadEqParameters* params);
 
