@@ -30,12 +30,12 @@ CodeStatus run_main_solve()
 
 static CodeStatus solve_line_eq(struct QuadEqParameters* params)
 {
-    assert(params != NULL);
+    ASSERT(params != NULL);
 
     CodeStatus code_status = OK;
-    if ((code_status = assert_isfinite(params->b, __FILE__, __FUNCTION__, __LINE__)) != OK)
+    if ((code_status = isfinite_check(params->b)) != OK)
         return code_status;
-    if ((code_status = assert_isfinite(params->c, __FILE__, __FUNCTION__, __LINE__)) != OK)
+    if ((code_status = isfinite_check(params->c)) != OK)
         return code_status;
 
     double b = params->b, c = params->c;
@@ -64,14 +64,14 @@ static CodeStatus solve_line_eq(struct QuadEqParameters* params)
 
 CodeStatus solve_quad_eq(struct QuadEqParameters* params)
 {
-    assert(params != NULL);
+    ASSERT(params != NULL);
 
     CodeStatus code_status = OK;
-    if ((code_status = assert_isfinite(params->a, __FILE__, __FUNCTION__, __LINE__)) != OK)
+    if ((code_status = isfinite_check(params->a)) != OK)
         return code_status;
-    if ((code_status = assert_isfinite(params->b, __FILE__, __FUNCTION__, __LINE__)) != OK)
+    if ((code_status = isfinite_check(params->b)) != OK)
         return code_status;
-    if ((code_status = assert_isfinite(params->c, __FILE__, __FUNCTION__, __LINE__)) != OK)
+    if ((code_status = isfinite_check(params->c)) != OK)
         return code_status;
 
     double a = params->a, b = params->b, c = params->c;
@@ -94,12 +94,8 @@ CodeStatus solve_quad_eq(struct QuadEqParameters* params)
     {
         params->x1 = (-b - sqrt(discr))/(2*a);
         params->x2 = (-b + sqrt(discr))/(2*a);
-        if (params->x1 > params->x2)
-        {
-            double var_for_change = params->x2;
-            params->x2 = params->x1;
-            params->x1 = var_for_change;
-        }
+        if (params->x1> params->x2)
+            swap(&params->x1, &params->x2, sizeof(double));
         params->roots_number = TWO_ROOTS;
         return code_status;
     }

@@ -1,38 +1,22 @@
+#include <mem.h>
 #include "io.h"
 #include "math.h"
 #include "utils.h"
 
 
-CodeStatus assert_isfinite(double x, const char* file, const char* func, int line)
+void file_open(const char file_name[], FILE** file_pointer)
+{
+    *file_pointer = fopen(file_name, "r");
+    ASSERT(*file_pointer != NULL);
+}
+
+
+CodeStatus isfinite_check(double x)
 {
     if (isfinite(x))
         return OK;
     else
-    {
-        PRINTRED("file %s:    In function %s:    line %d:\n"
-                 "file %s:    In function %s:    line %d:\n"
-                 "error: value of variable is infinite\n",
-                 __FILE__, __FUNCTION__, __LINE__,
-                 file, func, line);
         return NUMBER_IS_INFINITE_ERROR;
-    }
-}
-
-
-CodeStatus file_open(const char file_name[], FILE** file_pointer,
-                     const char* file, const char* func, int line)
-{
-    *file_pointer = fopen(file_name, "r");
-    if (*file_pointer == NULL)
-    {
-        PRINTRED("file %s:    In function %s:    line %d:\n"
-                 "file %s:    In function %s:    line %d:\n"
-                 "error: file wasn't found or opened\n",
-                 __FILE__, __FUNCTION__, __LINE__,
-                 file, func, line);
-        return FILE_NOT_OPENED_ERROR;
-    }
-    return OK;
 }
 
 
@@ -45,4 +29,13 @@ bool is_equal(double x, double y)
 bool is_zero(double x)
 {
     return abs(x) <= 1E-7;
+}
+
+
+void swap(void* x, void* y, size_t elem_size)
+{
+    void* swap_buffer = malloc(elem_size);
+    memcpy(swap_buffer, x, elem_size);
+    memcpy(x, y, elem_size);
+    memcpy(y, swap_buffer, elem_size);
 }

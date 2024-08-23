@@ -17,8 +17,7 @@ CodeStatus run_all_tests()
     TestStatus test_status = TEST_SUCCEED;
 
     FILE* tests_file = NULL;
-    if ((code_status = file_open(TESTS_FILE_NAME, &tests_file, __FILE__, __FUNCTION__, __LINE__)) != OK)
-        return code_status;
+    file_open(TESTS_FILE_NAME, &tests_file);
 
     int succeed_test_count = 0;
     int test_count = 0;
