@@ -7,14 +7,7 @@
 const int MAX_INPUT_LEN = 25;
 const char EXIT_STRING[] = "exit";
 
-static void clear_buffer();
 static InputStatus input_coeff(double* var_adress, char var_char);
-
-
-static void clear_buffer()
-{
-    while (getchar() != '\n') {}
-}
 
 
 InputStatus input_all_coeffs(struct QuadEqParameters* input_params)
@@ -65,11 +58,6 @@ void print_code_status(CodeStatus status)
         case NUMBER_IS_INFINITE_ERROR:
         {
             PRINTRED("\n### Program wasn't done because of error###\n### error: NUMBER_IS_INFINITE_ERROR ###\n");
-            break;
-        }
-        case FILE_NOT_OPENED_ERROR:
-        {
-            PRINTRED("\n### Program wasn't done because of error###\n### error: FILE_NOT_OPENED_ERROR ###\n");
             break;
         }
         case PROGRAM_NOT_STARTED:

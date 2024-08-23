@@ -1,3 +1,9 @@
+/*!
+    \author Toxic
+    \version 4.0
+    \date 08.23.2024
+ */
+
 #include "cmd_processing.h"
 #include "io.h"
 #include "tests.h"

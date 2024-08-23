@@ -4,6 +4,12 @@
 #include "utils.h"
 
 
+void clear_buffer()
+{
+    while (getchar() != '\n') {}
+}
+
+
 void file_open(const char file_name[], FILE** file_pointer)
 {
     *file_pointer = fopen(file_name, "r");
@@ -38,4 +44,5 @@ void swap(void* x, void* y, size_t elem_size)
     memcpy(swap_buffer, x, elem_size);
     memcpy(x, y, elem_size);
     memcpy(y, swap_buffer, elem_size);
+    free(swap_buffer);
 }
