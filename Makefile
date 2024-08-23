@@ -2,7 +2,7 @@ FLAGS := -o QuadSolver -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wund
 FILES := cmd_processing.cpp io.cpp main.cpp quad.cpp tests.cpp utils.cpp
 
 all: $(FILES)
-	g++ $(FILES) $(FLAGS)
+	g++ $^ $(FLAGS)
 
 run:
 	./QuadSolver.exe
