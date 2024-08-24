@@ -9,14 +9,16 @@
 #include "io.h"
 #include "quad.h"
 
+#ifndef NDEBUG
 /// Assert with red printing and showing the place where the issue was found
-#define ASSERT(assertion) if (!assertion) \
-                          { \
-                              PRINTRED("\033[0;31mAssertion failed:\n" \
-                                       "file %s:    func %s:    line %d:\n", \
-                                       __FILE__, __PRETTY_FUNCTION__, __LINE__); \
-                                       exit(EXIT_FAILURE); \
+#define ASSERT(assertion) if (!(assertion))                                       \
+                          {                                                       \
+                              PRINTRED("\033[0;31mAssertion failed:\n"            \
+                                       "file %s:    func %s:    line %d:\n",      \
+                                       __FILE__, __PRETTY_FUNCTION__, __LINE__);  \
+                                       exit(EXIT_FAILURE);                        \
                           }
+#endif
 
 /*!
     Clear buffer with input chars
@@ -27,8 +29,9 @@ void clear_buffer();
     Open file and check wheter the file_pointer is NULL
     \param[in]   file_name     The name of file which need to be opened
     \param[out]  file_pointer  The pointer of opened file
+    \return Status of completing the program
 */
-void file_open(const char file_name[], FILE** file_pointer);
+CodeStatus file_open(const char file_name[], FILE** file_pointer);
 
 /*!
     Check wheter the variable has infinite value

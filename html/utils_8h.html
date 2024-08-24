@@ -110,8 +110,8 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:afa847549e9dc6e4f49f651623bc456dc" id="r_afa847549e9dc6e4f49f651623bc456dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa847549e9dc6e4f49f651623bc456dc">clear_buffer</a> ()</td></tr>
 <tr class="separator:afa847549e9dc6e4f49f651623bc456dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83bbe2656669680d4cd4c5d3eb6a27f2" id="r_a83bbe2656669680d4cd4c5d3eb6a27f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83bbe2656669680d4cd4c5d3eb6a27f2">file_open</a> (const char file_name[], FILE **file_pointer)</td></tr>
-<tr class="separator:a83bbe2656669680d4cd4c5d3eb6a27f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e1678d0d8e5b2068700a731c17bccd" id="r_ab0e1678d0d8e5b2068700a731c17bccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="quad_8h.html#aae2973d8f50e9d43b7a7ebdeb847141f">CodeStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0e1678d0d8e5b2068700a731c17bccd">file_open</a> (const char file_name[], FILE **file_pointer)</td></tr>
+<tr class="separator:ab0e1678d0d8e5b2068700a731c17bccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76ad066d377100c668c6049a3d0ee59d" id="r_a76ad066d377100c668c6049a3d0ee59d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="quad_8h.html#aae2973d8f50e9d43b7a7ebdeb847141f">CodeStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76ad066d377100c668c6049a3d0ee59d">isfinite_check</a> (double x)</td></tr>
 <tr class="separator:a76ad066d377100c668c6049a3d0ee59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fbdf2aaa8257131a289c10f796ec25f" id="r_a8fbdf2aaa8257131a289c10f796ec25f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fbdf2aaa8257131a289c10f796ec25f">is_equal</a> (double x, double y)</td></tr>
@@ -138,12 +138,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                          <span class="keywordflow">if</span> (!assertion) \</div>
-<div class="line">                          { \</div>
-<div class="line">                              PRINTRED(<span class="stringliteral">&quot;\033[0;31mAssertion failed:\n&quot;</span> \</div>
-<div class="line">                                       <span class="stringliteral">&quot;file %s:    func %s:    line %d:\n&quot;</span>, \</div>
-<div class="line">                                       __FILE__, __PRETTY_FUNCTION__, __LINE__); \</div>
-<div class="line">                                       exit(EXIT_FAILURE); \</div>
+<b>Value:</b><div class="fragment"><div class="line">                          <span class="keywordflow">if</span> (!(assertion))                                       \</div>
+<div class="line">                          {                                                       \</div>
+<div class="line">                              PRINTRED(<span class="stringliteral">&quot;\033[0;31mAssertion failed:\n&quot;</span>            \</div>
+<div class="line">                                       <span class="stringliteral">&quot;file %s:    func %s:    line %d:\n&quot;</span>,      \</div>
+<div class="line">                                       __FILE__, __PRETTY_FUNCTION__, __LINE__);  \</div>
+<div class="line">                                       exit(EXIT_FAILURE);                        \</div>
 <div class="line">                          }</div>
 </div><!-- fragment -->
 <p>Assert with red printing and showing the place where the issue was found. </p>
@@ -169,14 +169,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a83bbe2656669680d4cd4c5d3eb6a27f2" name="a83bbe2656669680d4cd4c5d3eb6a27f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83bbe2656669680d4cd4c5d3eb6a27f2">&#9670;&#160;</a></span>file_open()</h2>
+<a id="ab0e1678d0d8e5b2068700a731c17bccd" name="ab0e1678d0d8e5b2068700a731c17bccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e1678d0d8e5b2068700a731c17bccd">&#9670;&#160;</a></span>file_open()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void file_open </td>
+          <td class="memname"><a class="el" href="quad_8h.html#aae2973d8f50e9d43b7a7ebdeb847141f">CodeStatus</a> file_open </td>
           <td>(</td>
           <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>[], </td>
         </tr>
@@ -194,6 +194,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Status of completing the program </dd></dl>
 
 </div>
 </div>

@@ -13,6 +13,7 @@ enum CodeStatus
 {
     OK,                        ///< Program was done without errors
     NUMBER_IS_INFINITE_ERROR,  ///< The variable in program got infinite value
+    FILE_NOT_OPENED_ERROR,     ///< File was not opened or found
     PROGRAM_NOT_STARTED,       ///< Program wasn't started due to error in command line options
 };
 

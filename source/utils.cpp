@@ -1,6 +1,7 @@
 #include <math.h>
-#include <mem.h>
+#include <string.h>
 #include "io.h"
+#include "quad.h"
 #include "utils.h"
 
 
@@ -10,10 +11,13 @@ void clear_buffer()
 }
 
 
-void file_open(const char file_name[], FILE** file_pointer)
+CodeStatus file_open(const char file_name[], FILE** file_pointer)
 {
     *file_pointer = fopen(file_name, "r");
-    ASSERT(*file_pointer != NULL);
+    if (*file_pointer == NULL)
+        return FILE_NOT_OPENED_ERROR;
+    else
+        return OK;
 }
 
 
@@ -40,9 +44,12 @@ bool is_zero(double x)
 
 void swap(void* x, void* y, size_t elem_size)
 {
-    void* swap_buffer = malloc(elem_size);
-    memcpy(swap_buffer, x, elem_size);
-    memcpy(x, y, elem_size);
-    memcpy(y, swap_buffer, elem_size);
-    free(swap_buffer);
+    char temp = ' ';
+    for (int i = 0; (size_t) i < elem_size; i++)
+    {
+        temp = *((char*) x);
+        *((char*) x) = *((char*) y);
+        *((char*) y) = temp;
+        x = ((char*) x) + 1; y = ((char*) y) + 1;
+    }
 }

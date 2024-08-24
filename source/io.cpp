@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "io.h"
+#include "quad.h"
 #include "utils.h"
 
 const int MAX_INPUT_LEN = 25;
@@ -58,6 +59,11 @@ void print_code_status(CodeStatus status)
         case NUMBER_IS_INFINITE_ERROR:
         {
             PRINTRED("\n### Program wasn't completed because of error ###\n### error: NUMBER_IS_INFINITE_ERROR ###\n");
+            break;
+        }
+        case FILE_NOT_OPENED_ERROR:
+        {
+            PRINTRED("\n### Program wasn't completed because of error ###\n### error: FILE_NOT_OPENED_ERROR ###\n");
             break;
         }
         case PROGRAM_NOT_STARTED:

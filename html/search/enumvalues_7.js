@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['solve_0',['SOLVE',['../cmd__processing_8h.html#aa80c104317735273929950f80bef6554ab9fc7975179c642bbac2b6ffd8fa3579',1,'cmd_processing.h']]]
+  ['program_5fnot_5fstarted_0',['PROGRAM_NOT_STARTED',['../quad_8h.html#aae2973d8f50e9d43b7a7ebdeb847141fac21152e10db7bf62442733e94b76fdd5',1,'quad.h']]]
 ];

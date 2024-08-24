@@ -12,7 +12,7 @@
 \item 
 void \mbox{\hyperlink{utils_8h_afa847549e9dc6e4f49f651623bc456dc}{clear\+\_\+buffer}} ()
 \item 
-void \mbox{\hyperlink{utils_8h_a83bbe2656669680d4cd4c5d3eb6a27f2}{file\+\_\+open}} (const char file\+\_\+name\mbox{[}$\,$\mbox{]}, FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file\+\_\+pointer)
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} \mbox{\hyperlink{utils_8h_ab0e1678d0d8e5b2068700a731c17bccd}{file\+\_\+open}} (const char file\+\_\+name\mbox{[}$\,$\mbox{]}, FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file\+\_\+pointer)
 \item 
 \mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} \mbox{\hyperlink{utils_8h_a76ad066d377100c668c6049a3d0ee59d}{isfinite\+\_\+check}} (double x)
 \item 
@@ -36,12 +36,12 @@ File with utilities
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!assertion)\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PRINTRED(\textcolor{stringliteral}{"{}\(\backslash\)033[0;31mAssertion\ failed:\(\backslash\)n"{}}\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}file\ \%s:\ \ \ \ func\ \%s:\ \ \ \ line\ \%d:\(\backslash\)n"{}},\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_FILE\_\_,\ \_\_PRETTY\_FUNCTION\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(assertion))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PRINTRED(\textcolor{stringliteral}{"{}\(\backslash\)033[0;31mAssertion\ failed:\(\backslash\)n"{}}\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}file\ \%s:\ \ \ \ func\ \%s:\ \ \ \ line\ \%d:\(\backslash\)n"{}},\ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_FILE\_\_,\ \_\_PRETTY\_FUNCTION\_\_,\ \_\_LINE\_\_);\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -58,11 +58,11 @@ Assert with red printing and showing the place where the issue was found.
 {\footnotesize\ttfamily \label{utils_8h_afa847549e9dc6e4f49f651623bc456dc} 
 void clear\+\_\+buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-Clear buffer with input chars \Hypertarget{utils_8h_a83bbe2656669680d4cd4c5d3eb6a27f2}\index{utils.h@{utils.h}!file\_open@{file\_open}}
+Clear buffer with input chars \Hypertarget{utils_8h_ab0e1678d0d8e5b2068700a731c17bccd}\index{utils.h@{utils.h}!file\_open@{file\_open}}
 \index{file\_open@{file\_open}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{file\_open()}{file\_open()}}
-{\footnotesize\ttfamily \label{utils_8h_a83bbe2656669680d4cd4c5d3eb6a27f2} 
-void file\+\_\+open (\begin{DoxyParamCaption}\item[{const char}]{file\+\_\+name}{\mbox{[}$\,$\mbox{]}, }\item[{FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{file\+\_\+pointer}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_ab0e1678d0d8e5b2068700a731c17bccd} 
+\mbox{\hyperlink{quad_8h_aae2973d8f50e9d43b7a7ebdeb847141f}{Code\+Status}} file\+\_\+open (\begin{DoxyParamCaption}\item[{const char}]{file\+\_\+name}{\mbox{[}$\,$\mbox{]}, }\item[{FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{file\+\_\+pointer}{}\end{DoxyParamCaption})}
 
 Open file and check wheter the file\+\_\+pointer is NULL 
 \begin{DoxyParams}[1]{Parameters}
@@ -71,6 +71,9 @@ Open file and check wheter the file\+\_\+pointer is NULL
 \mbox{\texttt{ out}}  & {\em file\+\_\+pointer} & The pointer of opened file \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
 \Hypertarget{utils_8h_a8fbdf2aaa8257131a289c10f796ec25f}\index{utils.h@{utils.h}!is\_equal@{is\_equal}}
 \index{is\_equal@{is\_equal}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{is\_equal()}{is\_equal()}}

@@ -29,7 +29,7 @@ $(OBJ_DIR):
 $(EXE): $(OBJECTS)
 	@$(CC) $(OBJECTS) -o $@
 
-$(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INCLUDES)
 	@$(CC) -c $(DED_FLAGS) -I$(INC_DIR) $< -o $@
 
 run: $(EXE)
@@ -53,6 +53,6 @@ clean_build:
 clean_obj:
 	rm $(OBJ_DIR)/*.o
 
-clean_all:
+clean:
 	rm $(BIN_DIR)/*.exe
 	rm $(OBJ_DIR)/*.o
