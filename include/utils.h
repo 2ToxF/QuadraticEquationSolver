@@ -17,7 +17,6 @@
                                        __FILE__, __PRETTY_FUNCTION__, __LINE__); \
                                        exit(EXIT_FAILURE); \
                           }
-/// Assert with red printing and showing the place where the issue was found
 
 /*!
     Clear buffer with input chars

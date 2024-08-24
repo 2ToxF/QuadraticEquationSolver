@@ -9,14 +9,18 @@
 #include "cmd_processing.h"
 #include "tests.h"
 
-/// Macros for color print
+/// Macros for red color print
 #define PRINTRED(text, ...)    printf("\033[0;31m" text "\033[0;37m", ## __VA_ARGS__)
+/// Macros for green color print
 #define PRINTGREEN(text, ...)  printf("\033[0;32m" text "\033[0;37m", ## __VA_ARGS__)
+/// Macros for yellow color print
 #define PRINTYELLOW(text, ...) printf("\033[0;33m" text "\033[0;37m", ## __VA_ARGS__)
+/// Macros for blue color print
 #define PRINTBLUE(text, ...)   printf("\033[0;34m" text "\033[0;37m", ## __VA_ARGS__)
+/// Macros for purple color print
 #define PRINTPURPLE(text, ...) printf("\033[0;35m" text "\033[0;37m", ## __VA_ARGS__)
+/// Macros for cyan color print
 #define PRINTCYAN(text, ...)   printf("\033[0;36m" text "\033[0;37m", ## __VA_ARGS__)
-/// Macros for color print
 
 /*!
     Reads coefficients of the equation from stream

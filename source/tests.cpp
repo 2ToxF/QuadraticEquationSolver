@@ -40,7 +40,7 @@ CodeStatus run_all_tests()
         print_test_result(test_status, test_count, &expected_params, &current_test);
     }
 
-    PRINTGREEN("PASSED: %d/%d", succeed_test_count, test_count);
+    PRINTGREEN("PASSED: %d/%d\n", succeed_test_count, test_count);
     return code_status;
 }
 

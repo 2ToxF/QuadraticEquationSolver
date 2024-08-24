@@ -52,12 +52,12 @@ void print_code_status(CodeStatus status)
     {
         case OK:
         {
-            PRINTGREEN("\n### Program was done without errors ###\n");
+            PRINTGREEN("\n### Program was completed without errors ###\n");
             break;
         }
         case NUMBER_IS_INFINITE_ERROR:
         {
-            PRINTRED("\n### Program wasn't done because of error###\n### error: NUMBER_IS_INFINITE_ERROR ###\n");
+            PRINTRED("\n### Program wasn't completed because of error ###\n### error: NUMBER_IS_INFINITE_ERROR ###\n");
             break;
         }
         case PROGRAM_NOT_STARTED:
@@ -67,7 +67,7 @@ void print_code_status(CodeStatus status)
         }
         default:
         {
-            PRINTRED("\n### Program wasn't done because of unknown error ###\n");
+            PRINTRED("\n### Program wasn't completed because of unknown error ###\n");
             break;
         }
     }
@@ -77,17 +77,18 @@ void print_code_status(CodeStatus status)
 void print_help()
 {
     PRINTBLUE("\nUsage:\n"
-            "1) .\\bin\\QuadSolver.exe [option]\n"
-            "Options:\n"
-            "    --tests                      Run tests for quadratic_equation_solver\n"
-            "    --solve                      Run quadratic_equation_solver\n"
-            "    --help                       Print hint with available commands\n"
-            "\n"
-            "2) make run[option]\n"
-            "Options:\n"
-            "    _tests                       Run tests for quadratic_equation_solver\n"
-            "    _solve                       Run quadratic_equation_solver\n"
-            "    _help                        Print hint with available commands\n");
+              "\n"
+              "1) .\\bin\\QuadSolver.exe [option]\n"
+              "Options:\n"
+              "    --tests                      Run tests for quadratic_equation_solver\n"
+              "    --solve                      Run quadratic_equation_solver\n"
+              "    --help                       Print hint with available commands\n"
+              "\n"
+              "2) make run[option]\n"
+              "Options:\n"
+              "    _tests                       Run tests for quadratic_equation_solver\n"
+              "    _solve                       Run quadratic_equation_solver\n"
+              "    _help                        Print hint with available commands\n");
 }
 
 

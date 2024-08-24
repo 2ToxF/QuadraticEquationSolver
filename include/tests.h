@@ -21,6 +21,7 @@ enum TestStatus
     \return Status of completing the program
 */
 CodeStatus run_all_tests();
+
 /*!
     Starts the test program
     \return Status of completing the program

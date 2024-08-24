@@ -15,12 +15,14 @@ enum CodeStatus
     NUMBER_IS_INFINITE_ERROR,  ///< The variable in program got infinite value
     PROGRAM_NOT_STARTED,       ///< Program wasn't started due to error in command line options
 };
+
 /// Status of input (exit program or continue program)
 enum InputStatus
 {
     EXIT,      ///< Program should be stopped immediately
     CONTINUE,  ///< Program should be continued
 };
+
 /// Number of equation's roots
 enum RootsNumber
 {

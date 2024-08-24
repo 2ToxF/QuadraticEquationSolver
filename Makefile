@@ -16,6 +16,8 @@ INCLUDES := $(wildcard $(INC_DIR)/*.h)
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 EXE := $(BIN_DIR)/QuadSolver.exe
 
+DOCS_NAME := Documentation
+
 all: $(OBJ_DIR) $(BIN_DIR) $(EXE)
 
 $(BIN_DIR):
@@ -41,6 +43,9 @@ run_solve:
 
 run_tests:
 	$(EXE) --tests
+
+docs:
+	doxygen $(DOCS_NAME)
 
 clean_build:
 	rm $(BIN_DIR)/*.exe
