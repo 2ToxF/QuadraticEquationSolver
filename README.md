@@ -11,18 +11,16 @@ Then download zip-file of the code and use command 'make' in the main folder of 
 
 ## Usage
 
-Here you can find most important command of the program
+Here you can find most important command of the program (use them from the main folder)
 
 ```
    Command (cmd or powershell)   |                Usage                 |
 -------------------------------------------------------------------------
-                          From folder 'bin'
-        .\QuadSolver.exe         |         Start in solving mode        |
-    .\QuadSolver.exe --solve     |         Start in solving mode        |
-    .\QuadSolver.exe --tests     |          Start in test mode          |
-    .\QuadSolver.exe --help      |   View hint with available options   |
+       .bin\QuadSolver.exe       |         Start in solving mode        |
+   .bin\QuadSolver.exe --solve   |         Start in solving mode        |
+   .bin\QuadSolver.exe --tests   |          Start in test mode          |
+   .bin\QuadSolver.exe --help    |   View hint with available options   |
 -------------------------------------------------------------------------
-                          From main folder
                make              |         Prepare QuadSolver.exe       |
              make run            |         Start in solving mode        |
           make run_solve         |         Start in solving mode        |
@@ -30,7 +28,7 @@ Here you can find most important command of the program
           make run_help          |   View hint with available options   |
 ```
 
-If you want to see documentation open html\
+If you want to see documentation open html\index.html
 
 ## Contributing and feedback
 
