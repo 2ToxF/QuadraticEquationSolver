@@ -1,10 +1,6 @@
-#include <assert.h>
 #include <math.h>
-#include <stdio.h>
-#include <string.h>
 #include "io.h"
 #include "quad.h"
-#include "tests.h"
 #include "utils.h"
 
 static CodeStatus solve_line_eq(struct QuadEqParameters* params);
@@ -23,7 +19,9 @@ CodeStatus run_main_solve()
     code_status = solve_quad_eq(&quad_eq_params);
     if (code_status != OK)
         return code_status;
+
     print_roots(&quad_eq_params);
+
     return code_status;
 }
 

@@ -1,6 +1,5 @@
 #include <math.h>
 #include <string.h>
-#include "io.h"
 #include "quad.h"
 #include "utils.h"
 
@@ -44,8 +43,12 @@ bool is_zero(double x)
 
 void swap(void* x, void* y, size_t elem_size)
 {
-    char temp = ' ';
-    for (int i = 0; (size_t) i < elem_size; i++)
+    ASSERT(x != NULL);
+    ASSERT(y != NULL);
+    ASSERT(x != y);
+
+    char temp = 0;
+    for (size_t i = 0; i < elem_size; i++)
     {
         temp = *((char*) x);
         *((char*) x) = *((char*) y);

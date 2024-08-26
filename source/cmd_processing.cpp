@@ -1,8 +1,5 @@
-#include <stdio.h>
 #include <string.h>
 #include "cmd_processing.h"
-#include "quad.h"
-#include "tests.h"
 
 static const char* const TEST_FLAG = "--tests";
 static const char* const SOLVE_FLAG = "--solve";

@@ -1,5 +1,4 @@
 #include <math.h>
-#include <stdio.h>
 #include "io.h"
 #include "quad.h"
 #include "tests.h"
@@ -57,6 +56,10 @@ CodeStatus run_main_test()
 static CodeStatus run_test(TestStatus* test_status, const struct QuadEqParameters* expected_roots,
                            struct QuadEqParameters* params)
 {
+    ASSERT(expected_roots != NULL);
+    ASSERT(params != NULL);
+    ASSERT(expected_roots != params);
+
     CodeStatus code_status = solve_quad_eq(params);
     if (code_status != OK)
         return code_status;

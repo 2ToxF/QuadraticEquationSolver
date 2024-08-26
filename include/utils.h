@@ -6,6 +6,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <stdlib.h>
 #include "io.h"
 #include "quad.h"
 
@@ -16,8 +17,10 @@
                               PRINTRED("\033[0;31mAssertion failed:\n"            \
                                        "file %s:    func %s:    line %d:\n",      \
                                        __FILE__, __PRETTY_FUNCTION__, __LINE__);  \
-                                       exit(EXIT_FAILURE);                        \
+                              exit(EXIT_FAILURE);                                 \
                           }
+#else
+#define ASSERT(assertion) ((void)0)
 #endif
 
 /*!

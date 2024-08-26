@@ -6,8 +6,6 @@
 #ifndef QUAD_H
 #define QUAD_H
 
-#include <stdio.h>
-
 /// Status of completing the program
 enum CodeStatus
 {

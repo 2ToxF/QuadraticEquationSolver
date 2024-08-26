@@ -6,6 +6,7 @@
 
 #include "cmd_processing.h"
 #include "io.h"
+#include "quad.h"
 #include "tests.h"
 
 CodeStatus run_program(CmdOption option);

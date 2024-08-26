@@ -6,7 +6,8 @@
 #ifndef IO_H
 #define IO_H
 
-#include "cmd_processing.h"
+#include <stdio.h>
+#include "quad.h"
 #include "tests.h"
 
 /// Macros for red color print

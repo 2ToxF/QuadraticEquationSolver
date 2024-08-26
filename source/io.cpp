@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include "io.h"
@@ -13,6 +12,8 @@ static InputStatus input_coeff(double* var_adress, char var_char);
 
 InputStatus input_all_coeffs(struct QuadEqParameters* input_params)
 {
+    ASSERT(input_params != NULL);
+
     if (input_coeff(&input_params->a, 'a') == EXIT)
         return EXIT;
     if (input_coeff(&input_params->b, 'b') == EXIT)
@@ -25,7 +26,7 @@ InputStatus input_all_coeffs(struct QuadEqParameters* input_params)
 
 static InputStatus input_coeff(double* var_adress, char var_char)
 {
-    assert(var_adress != NULL);
+    ASSERT(var_adress != NULL);
 
     PRINTBLUE("# %c = ", var_char);
 
@@ -100,7 +101,7 @@ void print_help()
 
 void print_roots(struct QuadEqParameters* roots)
 {
-    assert(roots != NULL);
+    ASSERT(roots != NULL);
 
     if (is_zero(roots->x1))
         roots->x1 = 0.0;
@@ -141,6 +142,10 @@ void print_roots(struct QuadEqParameters* roots)
 void print_test_result(TestStatus test_status, int test_number,
                        struct QuadEqParameters* expected_roots, const struct QuadEqParameters* params)
 {
+    ASSERT(expected_roots != NULL);
+    ASSERT(expected_roots != NULL);
+    ASSERT(expected_roots != params);
+
     if (test_status == TEST_FAILED)
     {
         PRINTRED("Test #%d is failed:\n"
