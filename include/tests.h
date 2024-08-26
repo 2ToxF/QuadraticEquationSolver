@@ -6,7 +6,7 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-#include "quad.h"
+#include "errors.h"
 
 /// Result of the current test
 enum TestStatus
@@ -16,15 +16,15 @@ enum TestStatus
 };
 
 /*!
-    Run the sequence of test
+    Runs the sequence of test
     \return Status of completing the program
 */
-CodeStatus run_all_tests();
+CodeError run_all_tests();
 
 /*!
     Starts the test program
     \return Status of completing the program
 */
-CodeStatus run_main_test();
+CodeError run_main_test();
 
 #endif

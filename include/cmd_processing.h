@@ -16,7 +16,7 @@ enum CmdOption
 };
 
 /*!
-    Reads and return type of command from command line when the prigram starts
+    Reads and returns type of command from command line when the prigram starts
     \param[in]  options_number  Number of options entered in the command line
     \param[in]  options         List of options entered in the command line
     \return Type of option entered in the command line

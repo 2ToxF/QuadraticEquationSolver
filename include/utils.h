@@ -6,8 +6,9 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "io.h"
+#include "input_output.h"
 #include "quad.h"
 
 #ifndef NDEBUG
@@ -34,14 +35,14 @@ void clear_buffer();
     \param[out]  file_pointer  The pointer of opened file
     \return Status of completing the program
 */
-CodeStatus file_open(const char file_name[], FILE** file_pointer);
+CodeError file_open(const char file_name[], FILE** file_pointer);
 
 /*!
     Check wheter the variable has infinite value
     \param  x  The variable that should be checked
     \return Status of completing the program
 */
-CodeStatus isfinite_check(double x);
+CodeError isfinite_check(double x);
 
 /*!
     Check wheter two float number are equal

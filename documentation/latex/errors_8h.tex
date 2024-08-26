@@ -1,0 +1,64 @@
+\doxysection{include/errors.h File Reference}
+\hypertarget{errors_8h}{}\label{errors_8h}\index{include/errors.h@{include/errors.h}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \{ \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10adabf350750d0d4fabd8954c0f1e9bbae94}{NO\+\_\+\+ERROR}}
+, \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10adad0576d04ea57834d3133fb955208cd29}{NUMBER\+\_\+\+IS\+\_\+\+INFINITE\+\_\+\+ERROR}}
+, \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10adabe59e29922ac783f60b5be9b23ea896a}{FILE\+\_\+\+NOT\+\_\+\+OPENED\+\_\+\+ERROR}}
+, \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10adac21152e10db7bf62442733e94b76fdd5}{PROGRAM\+\_\+\+NOT\+\_\+\+STARTED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Status of completing the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{errors_8h_a6dfcfce66fbe0c498e57978209fe02ae}{print\+\_\+code\+\_\+status}} (\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} status)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with errors and errors output 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}\index{errors.h@{errors.h}!CodeError@{CodeError}}
+\index{CodeError@{CodeError}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{CodeError}{CodeError}}
+{\footnotesize\ttfamily \label{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad} 
+enum \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}}}
+
+
+
+Status of completing the program. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERROR@{NO\_ERROR}!errors.h@{errors.h}}\index{errors.h@{errors.h}!NO\_ERROR@{NO\_ERROR}}}\Hypertarget{errors_8h_a4890027e84c3d8fa2a1701b5689a10adabf350750d0d4fabd8954c0f1e9bbae94}\label{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad} 
+NO\+\_\+\+ERROR&Program was done without errors. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUMBER\_IS\_INFINITE\_ERROR@{NUMBER\_IS\_INFINITE\_ERROR}!errors.h@{errors.h}}\index{errors.h@{errors.h}!NUMBER\_IS\_INFINITE\_ERROR@{NUMBER\_IS\_INFINITE\_ERROR}}}\Hypertarget{errors_8h_a4890027e84c3d8fa2a1701b5689a10adad0576d04ea57834d3133fb955208cd29}\label{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad} 
+NUMBER\+\_\+\+IS\+\_\+\+INFINITE\+\_\+\+ERROR&The variable in program got infinite value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FILE\_NOT\_OPENED\_ERROR@{FILE\_NOT\_OPENED\_ERROR}!errors.h@{errors.h}}\index{errors.h@{errors.h}!FILE\_NOT\_OPENED\_ERROR@{FILE\_NOT\_OPENED\_ERROR}}}\Hypertarget{errors_8h_a4890027e84c3d8fa2a1701b5689a10adabe59e29922ac783f60b5be9b23ea896a}\label{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad} 
+FILE\+\_\+\+NOT\+\_\+\+OPENED\+\_\+\+ERROR&File was not opened or found. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PROGRAM\_NOT\_STARTED@{PROGRAM\_NOT\_STARTED}!errors.h@{errors.h}}\index{errors.h@{errors.h}!PROGRAM\_NOT\_STARTED@{PROGRAM\_NOT\_STARTED}}}\Hypertarget{errors_8h_a4890027e84c3d8fa2a1701b5689a10adac21152e10db7bf62442733e94b76fdd5}\label{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad} 
+PROGRAM\+\_\+\+NOT\+\_\+\+STARTED&Program wasn\textquotesingle{}t started due to error in command line options. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{errors_8h_a6dfcfce66fbe0c498e57978209fe02ae}\index{errors.h@{errors.h}!print\_code\_status@{print\_code\_status}}
+\index{print\_code\_status@{print\_code\_status}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{print\_code\_status()}{print\_code\_status()}}
+{\footnotesize\ttfamily \label{errors_8h_a6dfcfce66fbe0c498e57978209fe02ae} 
+void print\+\_\+code\+\_\+status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}}}]{status}{}\end{DoxyParamCaption})}
+
+Prints the result of completeing the program 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em status} & Status of program completing \\
+\hline
+\end{DoxyParams}

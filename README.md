@@ -28,7 +28,7 @@ Here you can find most important commands of the program (use them from the main
           make run_help          |   View hint with available options   |
 ```
 
-If you want to see documentation open 'index.html' which is in 'html' folder
+If you want to see documentation open 'index.html' which is in 'Documentation/html' folder
 
 ## Contributing and feedback
 

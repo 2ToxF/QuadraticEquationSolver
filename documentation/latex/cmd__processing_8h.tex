@@ -1,0 +1,69 @@
+\doxysection{include/cmd\+\_\+processing.h File Reference}
+\hypertarget{cmd__processing_8h}{}\label{cmd__processing_8h}\index{include/cmd\_processing.h@{include/cmd\_processing.h}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554}{Cmd\+Option}} \{ \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554ab2f0cd22b1963becef8b91d29d567fe8}{TEST}}
+, \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554ab9fc7975179c642bbac2b6ffd8fa3579}{SOLVE}}
+, \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554a9f5cb747b2e1f0ea781d2b1f2a5b4824}{HELP}}
+, \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554a6ce26a62afab55d7606ad4e92428b30c}{UNKNOWN}}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of command entered in command line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554}{Cmd\+Option}} \mbox{\hyperlink{cmd__processing_8h_ae5e5e73b7b31cbf29942c75102c901e1}{cmd\+\_\+read}} (int options\+\_\+number, const char \texorpdfstring{$\ast$}{*}options\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with code for reading commands from command line when the program starts 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{cmd__processing_8h_aa80c104317735273929950f80bef6554}\index{cmd\_processing.h@{cmd\_processing.h}!CmdOption@{CmdOption}}
+\index{CmdOption@{CmdOption}!cmd\_processing.h@{cmd\_processing.h}}
+\doxysubsubsection{\texorpdfstring{CmdOption}{CmdOption}}
+{\footnotesize\ttfamily \label{cmd__processing_8h_aa80c104317735273929950f80bef6554} 
+enum \mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554}{Cmd\+Option}}}
+
+
+
+Type of command entered in command line. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST@{TEST}!cmd\_processing.h@{cmd\_processing.h}}\index{cmd\_processing.h@{cmd\_processing.h}!TEST@{TEST}}}\Hypertarget{cmd__processing_8h_aa80c104317735273929950f80bef6554ab2f0cd22b1963becef8b91d29d567fe8}\label{cmd__processing_8h_aa80c104317735273929950f80bef6554} 
+TEST&Shows that program will start in test-\/mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVE@{SOLVE}!cmd\_processing.h@{cmd\_processing.h}}\index{cmd\_processing.h@{cmd\_processing.h}!SOLVE@{SOLVE}}}\Hypertarget{cmd__processing_8h_aa80c104317735273929950f80bef6554ab9fc7975179c642bbac2b6ffd8fa3579}\label{cmd__processing_8h_aa80c104317735273929950f80bef6554} 
+SOLVE&Shows that mrogram will start in classical mode with entering coefficients. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HELP@{HELP}!cmd\_processing.h@{cmd\_processing.h}}\index{cmd\_processing.h@{cmd\_processing.h}!HELP@{HELP}}}\Hypertarget{cmd__processing_8h_aa80c104317735273929950f80bef6554a9f5cb747b2e1f0ea781d2b1f2a5b4824}\label{cmd__processing_8h_aa80c104317735273929950f80bef6554} 
+HELP&Shows that program will print hint. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!cmd\_processing.h@{cmd\_processing.h}}\index{cmd\_processing.h@{cmd\_processing.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{cmd__processing_8h_aa80c104317735273929950f80bef6554a6ce26a62afab55d7606ad4e92428b30c}\label{cmd__processing_8h_aa80c104317735273929950f80bef6554} 
+UNKNOWN&Shows that program doesn\textquotesingle{}t know entered option/options. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cmd__processing_8h_ae5e5e73b7b31cbf29942c75102c901e1}\index{cmd\_processing.h@{cmd\_processing.h}!cmd\_read@{cmd\_read}}
+\index{cmd\_read@{cmd\_read}!cmd\_processing.h@{cmd\_processing.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_read()}{cmd\_read()}}
+{\footnotesize\ttfamily \label{cmd__processing_8h_ae5e5e73b7b31cbf29942c75102c901e1} 
+\mbox{\hyperlink{cmd__processing_8h_aa80c104317735273929950f80bef6554}{Cmd\+Option}} cmd\+\_\+read (\begin{DoxyParamCaption}\item[{int}]{options\+\_\+number}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{options}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+Reads and returns type of command from command line when the prigram starts 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em options\+\_\+number} & Number of options entered in the command line \\
+\hline
+\mbox{\texttt{ in}}  & {\em options} & List of options entered in the command line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type of option entered in the command line 
+\end{DoxyReturn}

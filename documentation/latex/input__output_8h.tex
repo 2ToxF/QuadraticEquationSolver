@@ -1,0 +1,208 @@
+\doxysection{include/input\+\_\+output.h File Reference}
+\hypertarget{input__output_8h}{}\label{input__output_8h}\index{include/input\_output.h@{include/input\_output.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}quad.\+h"{}}\newline
+{\ttfamily \#include "{}tests.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{input__output_8h_a223d38b33654d1ce82890e2a3db579d7}{PRINTRED}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for red color print. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{input__output_8h_aac121329f2592d17d68e61184a716e47}{PRINTGREEN}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for green color print. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{input__output_8h_a6f29955db850bbc1afb6c6eb1120d076}{PRINTYELLOW}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for yellow color print. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{input__output_8h_ae88136548b1ede08df5cd4705aeb282f}{PRINTBLUE}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for blue color print. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{input__output_8h_a0f1d8b72faee44223b81790dfb89eff8}{PRINTPURPLE}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for purple color print. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{input__output_8h_a72f15feb395cc29287cae3fcae70e5ff}{PRINTCYAN}}(text, ...)
+\begin{DoxyCompactList}\small\item\em Macros for cyan color print. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}} \{ \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}
+, \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a49959dd441dcda75d6898cf2c68fb374}{CONTINUE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Status of input (exit program or continue program) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}} \mbox{\hyperlink{input__output_8h_ab6b4f26ce77313d2a8c5dacadd857229}{input\+\_\+all\+\_\+coeffs}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}input\+\_\+params)
+\item 
+void \mbox{\hyperlink{input__output_8h_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\item 
+void \mbox{\hyperlink{input__output_8h_a2639adee5738d8401bd669de923df504}{print\+\_\+roots}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}roots)
+\item 
+void \mbox{\hyperlink{input__output_8h_ac85b7d84f41ec81d057c5a8a98d1b219}{print\+\_\+test\+\_\+result}} (\mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}} test\+\_\+status, int test\+\_\+number, const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}expected\+\_\+roots, const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}params)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with input and output functions and macros for color print 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{input__output_8h_ae88136548b1ede08df5cd4705aeb282f}\index{input\_output.h@{input\_output.h}!PRINTBLUE@{PRINTBLUE}}
+\index{PRINTBLUE@{PRINTBLUE}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTBLUE}{PRINTBLUE}}
+{\footnotesize\ttfamily \label{input__output_8h_ae88136548b1ede08df5cd4705aeb282f} 
+\#define PRINTBLUE(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;34m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for blue color print. 
+
+\Hypertarget{input__output_8h_a72f15feb395cc29287cae3fcae70e5ff}\index{input\_output.h@{input\_output.h}!PRINTCYAN@{PRINTCYAN}}
+\index{PRINTCYAN@{PRINTCYAN}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTCYAN}{PRINTCYAN}}
+{\footnotesize\ttfamily \label{input__output_8h_a72f15feb395cc29287cae3fcae70e5ff} 
+\#define PRINTCYAN(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;36m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for cyan color print. 
+
+\Hypertarget{input__output_8h_aac121329f2592d17d68e61184a716e47}\index{input\_output.h@{input\_output.h}!PRINTGREEN@{PRINTGREEN}}
+\index{PRINTGREEN@{PRINTGREEN}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTGREEN}{PRINTGREEN}}
+{\footnotesize\ttfamily \label{input__output_8h_aac121329f2592d17d68e61184a716e47} 
+\#define PRINTGREEN(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;32m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for green color print. 
+
+\Hypertarget{input__output_8h_a0f1d8b72faee44223b81790dfb89eff8}\index{input\_output.h@{input\_output.h}!PRINTPURPLE@{PRINTPURPLE}}
+\index{PRINTPURPLE@{PRINTPURPLE}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTPURPLE}{PRINTPURPLE}}
+{\footnotesize\ttfamily \label{input__output_8h_a0f1d8b72faee44223b81790dfb89eff8} 
+\#define PRINTPURPLE(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;35m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for purple color print. 
+
+\Hypertarget{input__output_8h_a223d38b33654d1ce82890e2a3db579d7}\index{input\_output.h@{input\_output.h}!PRINTRED@{PRINTRED}}
+\index{PRINTRED@{PRINTRED}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTRED}{PRINTRED}}
+{\footnotesize\ttfamily \label{input__output_8h_a223d38b33654d1ce82890e2a3db579d7} 
+\#define PRINTRED(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;31m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for red color print. 
+
+\Hypertarget{input__output_8h_a6f29955db850bbc1afb6c6eb1120d076}\index{input\_output.h@{input\_output.h}!PRINTYELLOW@{PRINTYELLOW}}
+\index{PRINTYELLOW@{PRINTYELLOW}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{PRINTYELLOW}{PRINTYELLOW}}
+{\footnotesize\ttfamily \label{input__output_8h_a6f29955db850bbc1afb6c6eb1120d076} 
+\#define PRINTYELLOW(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;33m"{}}\ text\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;37m"{}},\ \#\#\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+Macros for yellow color print. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}\index{input\_output.h@{input\_output.h}!InputStatus@{InputStatus}}
+\index{InputStatus@{InputStatus}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{InputStatus}{InputStatus}}
+{\footnotesize\ttfamily \label{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891} 
+enum \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}}}
+
+
+
+Status of input (exit program or continue program) 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!input\_output.h@{input\_output.h}}\index{input\_output.h@{input\_output.h}!EXIT@{EXIT}}}\Hypertarget{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a7a10b5d68d31711288e1fe0fa17dbf4f}\label{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891} 
+EXIT&Program should be stopped immediately. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUE@{CONTINUE}!input\_output.h@{input\_output.h}}\index{input\_output.h@{input\_output.h}!CONTINUE@{CONTINUE}}}\Hypertarget{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a49959dd441dcda75d6898cf2c68fb374}\label{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891} 
+CONTINUE&Program should be continued. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{input__output_8h_ab6b4f26ce77313d2a8c5dacadd857229}\index{input\_output.h@{input\_output.h}!input\_all\_coeffs@{input\_all\_coeffs}}
+\index{input\_all\_coeffs@{input\_all\_coeffs}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{input\_all\_coeffs()}{input\_all\_coeffs()}}
+{\footnotesize\ttfamily \label{input__output_8h_ab6b4f26ce77313d2a8c5dacadd857229} 
+\mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}} input\+\_\+all\+\_\+coeffs (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{input\+\_\+params}{}\end{DoxyParamCaption})}
+
+Starts program of reading coefficients of the equation from stream 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+params} & Struct in which the coefficients of the equation will be entered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of input (exit program or continue program) 
+\end{DoxyReturn}
+\Hypertarget{input__output_8h_a853216ac51aa181669ff4d3de74058a7}\index{input\_output.h@{input\_output.h}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily \label{input__output_8h_a853216ac51aa181669ff4d3de74058a7} 
+void print\+\_\+help (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Prints hint with available options for user \Hypertarget{input__output_8h_a2639adee5738d8401bd669de923df504}\index{input\_output.h@{input\_output.h}!print\_roots@{print\_roots}}
+\index{print\_roots@{print\_roots}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{print\_roots()}{print\_roots()}}
+{\footnotesize\ttfamily \label{input__output_8h_a2639adee5738d8401bd669de923df504} 
+void print\+\_\+roots (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{roots}{}\end{DoxyParamCaption})}
+
+Prints roots of equation 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em roots} & Struct with roots of equation \\
+\hline
+\end{DoxyParams}
+\Hypertarget{input__output_8h_ac85b7d84f41ec81d057c5a8a98d1b219}\index{input\_output.h@{input\_output.h}!print\_test\_result@{print\_test\_result}}
+\index{print\_test\_result@{print\_test\_result}!input\_output.h@{input\_output.h}}
+\doxysubsubsection{\texorpdfstring{print\_test\_result()}{print\_test\_result()}}
+{\footnotesize\ttfamily \label{input__output_8h_ac85b7d84f41ec81d057c5a8a98d1b219} 
+void print\+\_\+test\+\_\+result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}}}]{test\+\_\+status}{, }\item[{int}]{test\+\_\+number}{, }\item[{const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{expected\+\_\+roots}{, }\item[{const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
+
+Prints test result 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em test\+\_\+status} & Status of test (succeed or failed) \\
+\hline
+\mbox{\texttt{ in}}  & {\em test\+\_\+number} & Test number \\
+\hline
+\mbox{\texttt{ in}}  & {\em expected\+\_\+roots} & Roots that were expected in the end of test \\
+\hline
+\mbox{\texttt{ in}}  & {\em params} & Parameters of the test (coefficients and roots got from program) \\
+\hline
+\end{DoxyParams}

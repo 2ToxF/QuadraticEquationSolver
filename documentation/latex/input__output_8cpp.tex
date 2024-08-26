@@ -1,0 +1,81 @@
+\doxysection{source/input\+\_\+output.cpp File Reference}
+\hypertarget{input__output_8cpp}{}\label{input__output_8cpp}\index{source/input\_output.cpp@{source/input\_output.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}input\+\_\+output.\+h"{}}\newline
+{\ttfamily \#include "{}quad.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}} \mbox{\hyperlink{input__output_8cpp_ab6b4f26ce77313d2a8c5dacadd857229}{input\+\_\+all\+\_\+coeffs}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}input\+\_\+params)
+\item 
+void \mbox{\hyperlink{input__output_8cpp_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\item 
+void \mbox{\hyperlink{input__output_8cpp_a2639adee5738d8401bd669de923df504}{print\+\_\+roots}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}roots)
+\item 
+void \mbox{\hyperlink{input__output_8cpp_ac85b7d84f41ec81d057c5a8a98d1b219}{print\+\_\+test\+\_\+result}} (\mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}} test\+\_\+status, int test\+\_\+number, const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}expected\+\_\+roots, const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}params)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{input__output_8cpp_a3a42850fbdfd3d53102f76b986572d32}\label{input__output_8cpp_a3a42850fbdfd3d53102f76b986572d32} 
+const int {\bfseries MAX\+\_\+\+INPUT\+\_\+\+LEN} = 25
+\item 
+\Hypertarget{input__output_8cpp_aab18d064609de1ae205299332b8da9e6}\label{input__output_8cpp_aab18d064609de1ae205299332b8da9e6} 
+const char {\bfseries EXIT\+\_\+\+STRING} \mbox{[}$\,$\mbox{]} = "{}exit"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with input and output functions and macros for color print 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{input__output_8cpp_ab6b4f26ce77313d2a8c5dacadd857229}\index{input\_output.cpp@{input\_output.cpp}!input\_all\_coeffs@{input\_all\_coeffs}}
+\index{input\_all\_coeffs@{input\_all\_coeffs}!input\_output.cpp@{input\_output.cpp}}
+\doxysubsubsection{\texorpdfstring{input\_all\_coeffs()}{input\_all\_coeffs()}}
+{\footnotesize\ttfamily \label{input__output_8cpp_ab6b4f26ce77313d2a8c5dacadd857229} 
+\mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{Input\+Status}} input\+\_\+all\+\_\+coeffs (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{input\+\_\+params}{}\end{DoxyParamCaption})}
+
+Starts program of reading coefficients of the equation from stream 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+params} & Struct in which the coefficients of the equation will be entered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of input (exit program or continue program) 
+\end{DoxyReturn}
+\Hypertarget{input__output_8cpp_a853216ac51aa181669ff4d3de74058a7}\index{input\_output.cpp@{input\_output.cpp}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!input\_output.cpp@{input\_output.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily \label{input__output_8cpp_a853216ac51aa181669ff4d3de74058a7} 
+void print\+\_\+help (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Prints hint with available options for user \Hypertarget{input__output_8cpp_a2639adee5738d8401bd669de923df504}\index{input\_output.cpp@{input\_output.cpp}!print\_roots@{print\_roots}}
+\index{print\_roots@{print\_roots}!input\_output.cpp@{input\_output.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_roots()}{print\_roots()}}
+{\footnotesize\ttfamily \label{input__output_8cpp_a2639adee5738d8401bd669de923df504} 
+void print\+\_\+roots (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{roots}{}\end{DoxyParamCaption})}
+
+Prints roots of equation 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em roots} & Struct with roots of equation \\
+\hline
+\end{DoxyParams}
+\Hypertarget{input__output_8cpp_ac85b7d84f41ec81d057c5a8a98d1b219}\index{input\_output.cpp@{input\_output.cpp}!print\_test\_result@{print\_test\_result}}
+\index{print\_test\_result@{print\_test\_result}!input\_output.cpp@{input\_output.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_test\_result()}{print\_test\_result()}}
+{\footnotesize\ttfamily \label{input__output_8cpp_ac85b7d84f41ec81d057c5a8a98d1b219} 
+void print\+\_\+test\+\_\+result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{Test\+Status}}}]{test\+\_\+status}{, }\item[{int}]{test\+\_\+number}{, }\item[{const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{expected\+\_\+roots}{, }\item[{const struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
+
+Prints test result 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em test\+\_\+status} & Status of test (succeed or failed) \\
+\hline
+\mbox{\texttt{ in}}  & {\em test\+\_\+number} & Test number \\
+\hline
+\mbox{\texttt{ in}}  & {\em expected\+\_\+roots} & Roots that were expected in the end of test \\
+\hline
+\mbox{\texttt{ in}}  & {\em params} & Parameters of the test (coefficients and roots got from program) \\
+\hline
+\end{DoxyParams}

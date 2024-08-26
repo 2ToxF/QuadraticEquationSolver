@@ -1,0 +1,84 @@
+\doxysection{include/quad.h File Reference}
+\hypertarget{quad_8h}{}\label{quad_8h}\index{include/quad.h@{include/quad.h}}
+{\ttfamily \#include "{}errors.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}}
+\begin{DoxyCompactList}\small\item\em Parameters for equation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4c}{Roots\+Number}} \{ \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4cab9a321da349ac1355b717745736ad90c}{NO\+\_\+\+ROOTS}}
+, \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4ca6700c0f6efd23571cb22aefd2510b1cf}{ONE\+\_\+\+ROOT}}
+, \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4ca876622d3c0b008da13a3685c64714e81}{TWO\+\_\+\+ROOTS}}
+, \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4ca4e9dbcd99a3a1064fe545bdf55687b35}{INFINITE\+\_\+\+NUM\+\_\+\+OF\+\_\+\+ROOTS}}
+ \}
+\begin{DoxyCompactList}\small\item\em Number of equation\textquotesingle{}s roots. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec}{main\+\_\+eq\+\_\+solve}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}params)
+\item 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{quad_8h_a492245075d504251383a4c1761b21779}{run\+\_\+main\+\_\+solve}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with code for solving quadratic equation and input coefficients of it 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{quad_8h_afd060068f75e1d56820c77fb322afa4c}\index{quad.h@{quad.h}!RootsNumber@{RootsNumber}}
+\index{RootsNumber@{RootsNumber}!quad.h@{quad.h}}
+\doxysubsubsection{\texorpdfstring{RootsNumber}{RootsNumber}}
+{\footnotesize\ttfamily \label{quad_8h_afd060068f75e1d56820c77fb322afa4c} 
+enum \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4c}{Roots\+Number}}}
+
+
+
+Number of equation\textquotesingle{}s roots. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ROOTS@{NO\_ROOTS}!quad.h@{quad.h}}\index{quad.h@{quad.h}!NO\_ROOTS@{NO\_ROOTS}}}\Hypertarget{quad_8h_afd060068f75e1d56820c77fb322afa4cab9a321da349ac1355b717745736ad90c}\label{quad_8h_afd060068f75e1d56820c77fb322afa4c} 
+NO\+\_\+\+ROOTS&Equation has no roots. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_ROOT@{ONE\_ROOT}!quad.h@{quad.h}}\index{quad.h@{quad.h}!ONE\_ROOT@{ONE\_ROOT}}}\Hypertarget{quad_8h_afd060068f75e1d56820c77fb322afa4ca6700c0f6efd23571cb22aefd2510b1cf}\label{quad_8h_afd060068f75e1d56820c77fb322afa4c} 
+ONE\+\_\+\+ROOT&Equation has only one root. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO\_ROOTS@{TWO\_ROOTS}!quad.h@{quad.h}}\index{quad.h@{quad.h}!TWO\_ROOTS@{TWO\_ROOTS}}}\Hypertarget{quad_8h_afd060068f75e1d56820c77fb322afa4ca876622d3c0b008da13a3685c64714e81}\label{quad_8h_afd060068f75e1d56820c77fb322afa4c} 
+TWO\+\_\+\+ROOTS&Equation has only two roots. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFINITE\_NUM\_OF\_ROOTS@{INFINITE\_NUM\_OF\_ROOTS}!quad.h@{quad.h}}\index{quad.h@{quad.h}!INFINITE\_NUM\_OF\_ROOTS@{INFINITE\_NUM\_OF\_ROOTS}}}\Hypertarget{quad_8h_afd060068f75e1d56820c77fb322afa4ca4e9dbcd99a3a1064fe545bdf55687b35}\label{quad_8h_afd060068f75e1d56820c77fb322afa4c} 
+INFINITE\+\_\+\+NUM\+\_\+\+OF\+\_\+\+ROOTS&Equation has infinte number of roots. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec}\index{quad.h@{quad.h}!main\_eq\_solve@{main\_eq\_solve}}
+\index{main\_eq\_solve@{main\_eq\_solve}!quad.h@{quad.h}}
+\doxysubsubsection{\texorpdfstring{main\_eq\_solve()}{main\_eq\_solve()}}
+{\footnotesize\ttfamily \label{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec} 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} main\+\_\+eq\+\_\+solve (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
+
+Solves the specific equation 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em params} & Parameters for equation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
+\Hypertarget{quad_8h_a492245075d504251383a4c1761b21779}\index{quad.h@{quad.h}!run\_main\_solve@{run\_main\_solve}}
+\index{run\_main\_solve@{run\_main\_solve}!quad.h@{quad.h}}
+\doxysubsubsection{\texorpdfstring{run\_main\_solve()}{run\_main\_solve()}}
+{\footnotesize\ttfamily \label{quad_8h_a492245075d504251383a4c1761b21779} 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} run\+\_\+main\+\_\+solve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Starts input coefficients and colving the equation \begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}

@@ -16,7 +16,7 @@ INCLUDES := $(wildcard $(INC_DIR)/*.h)
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 EXE := $(BIN_DIR)/QuadSolver.exe
 
-DOCS_NAME := Documentation
+DOCS_NAME := Docs_config
 
 all: $(OBJ_DIR) $(BIN_DIR) $(EXE)
 

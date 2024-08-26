@@ -1,0 +1,37 @@
+\doxysection{input\+\_\+output.\+h}
+\hypertarget{input__output_8h_source}{}\label{input__output_8h_source}\index{include/input\_output.h@{include/input\_output.h}}
+\mbox{\hyperlink{input__output_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ IO\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ IO\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quad_8h}{quad.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tests_8h}{tests.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ PRINTRED(text,\ ...)\ \ \ \ printf("{}\(\backslash\)033[0;31m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ PRINTGREEN(text,\ ...)\ \ printf("{}\(\backslash\)033[0;32m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ PRINTYELLOW(text,\ ...)\ printf("{}\(\backslash\)033[0;33m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ PRINTBLUE(text,\ ...)\ \ \ printf("{}\(\backslash\)033[0;34m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ PRINTPURPLE(text,\ ...)\ printf("{}\(\backslash\)033[0;35m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ PRINTCYAN(text,\ ...)\ \ \ printf("{}\(\backslash\)033[0;36m"{}\ text\ "{}\(\backslash\)033[0;37m"{},\ \#\#\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{InputStatus}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}},\ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891a49959dd441dcda75d6898cf2c68fb374}{CONTINUE}},\ \ }
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \mbox{\hyperlink{input__output_8h_aef35fc440c8029ffabbdc082f7c0a891}{InputStatus}}\ \mbox{\hyperlink{input__output_8h_ab6b4f26ce77313d2a8c5dacadd857229}{input\_all\_coeffs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_quad_eq_parameters}{QuadEqParameters}}*\ input\_params);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{input__output_8h_a853216ac51aa181669ff4d3de74058a7}{print\_help}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{input__output_8h_a2639adee5738d8401bd669de923df504}{print\_roots}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_quad_eq_parameters}{QuadEqParameters}}*\ roots);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{input__output_8h_ac85b7d84f41ec81d057c5a8a98d1b219}{print\_test\_result}}(\mbox{\hyperlink{tests_8h_af150c85f3da4e3fb41d83d4a465f7fc3}{TestStatus}}\ test\_status,\ \textcolor{keywordtype}{int}\ test\_number,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_quad_eq_parameters}{QuadEqParameters}}*\ expected\_roots,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_quad_eq_parameters}{QuadEqParameters}}*\ params);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

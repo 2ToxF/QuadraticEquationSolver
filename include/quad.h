@@ -6,21 +6,7 @@
 #ifndef QUAD_H
 #define QUAD_H
 
-/// Status of completing the program
-enum CodeStatus
-{
-    OK,                        ///< Program was done without errors
-    NUMBER_IS_INFINITE_ERROR,  ///< The variable in program got infinite value
-    FILE_NOT_OPENED_ERROR,     ///< File was not opened or found
-    PROGRAM_NOT_STARTED,       ///< Program wasn't started due to error in command line options
-};
-
-/// Status of input (exit program or continue program)
-enum InputStatus
-{
-    EXIT,      ///< Program should be stopped immediately
-    CONTINUE,  ///< Program should be continued
-};
+#include "errors.h"
 
 /// Number of equation's roots
 enum RootsNumber
@@ -43,16 +29,16 @@ struct QuadEqParameters
 };
 
 /*!
-    Starts input coefficients and colving the equation
-    \return Status of completing the program
-*/
-CodeStatus run_main_solve();
-
-/*!
-    Solve the quadratic equation
+    Solves the specific equation
     \param[in, out]  params  Parameters for equation
     \return Status of completing the program
 */
-CodeStatus solve_quad_eq(struct QuadEqParameters* params);
+CodeError main_eq_solve(struct QuadEqParameters* params);
+
+/*!
+    Starts input coefficients and colving the equation
+    \return Status of completing the program
+*/
+CodeError run_main_solve();
 
 #endif

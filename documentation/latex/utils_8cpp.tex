@@ -1,0 +1,108 @@
+\doxysection{source/utils.cpp File Reference}
+\hypertarget{utils_8cpp}{}\label{utils_8cpp}\index{source/utils.cpp@{source/utils.cpp}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}quad.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils_8cpp_afa847549e9dc6e4f49f651623bc456dc}{clear\+\_\+buffer}} ()
+\item 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{utils_8cpp_a10d3370e9273bafba80639d9d4e45588}{file\+\_\+open}} (const char file\+\_\+name\mbox{[}$\,$\mbox{]}, FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file\+\_\+pointer)
+\item 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{utils_8cpp_af8605472b569936b5060fa3e0ba5383b}{isfinite\+\_\+check}} (double x)
+\item 
+bool \mbox{\hyperlink{utils_8cpp_a8fbdf2aaa8257131a289c10f796ec25f}{is\+\_\+equal}} (double x, double y)
+\item 
+bool \mbox{\hyperlink{utils_8cpp_ab9b65caeaf434e3a4cd7f65cf5db2e59}{is\+\_\+zero}} (double x)
+\item 
+void \mbox{\hyperlink{utils_8cpp_afe4a5bd09f2c05b723590b2412179646}{swap}} (void \texorpdfstring{$\ast$}{*}x, void \texorpdfstring{$\ast$}{*}y, size\+\_\+t elem\+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{utils_8cpp_a8bc342598c00e53ff3a78c4fa5ac1478}\label{utils_8cpp_a8bc342598c00e53ff3a78c4fa5ac1478} 
+const double {\bfseries PRECISION\+\_\+\+LIMIT} = 1E-\/7
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File with utilities 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8cpp_afa847549e9dc6e4f49f651623bc456dc}\index{utils.cpp@{utils.cpp}!clear\_buffer@{clear\_buffer}}
+\index{clear\_buffer@{clear\_buffer}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{clear\_buffer()}{clear\_buffer()}}
+{\footnotesize\ttfamily \label{utils_8cpp_afa847549e9dc6e4f49f651623bc456dc} 
+void clear\+\_\+buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Clear buffer with input chars \Hypertarget{utils_8cpp_a10d3370e9273bafba80639d9d4e45588}\index{utils.cpp@{utils.cpp}!file\_open@{file\_open}}
+\index{file\_open@{file\_open}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{file\_open()}{file\_open()}}
+{\footnotesize\ttfamily \label{utils_8cpp_a10d3370e9273bafba80639d9d4e45588} 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} file\+\_\+open (\begin{DoxyParamCaption}\item[{const char}]{file\+\_\+name}{\mbox{[}$\,$\mbox{]}, }\item[{FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{file\+\_\+pointer}{}\end{DoxyParamCaption})}
+
+Open file and check wheter the file\+\_\+pointer is NULL 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+\_\+name} & The name of file which need to be opened \\
+\hline
+\mbox{\texttt{ out}}  & {\em file\+\_\+pointer} & The pointer of opened file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
+\Hypertarget{utils_8cpp_a8fbdf2aaa8257131a289c10f796ec25f}\index{utils.cpp@{utils.cpp}!is\_equal@{is\_equal}}
+\index{is\_equal@{is\_equal}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_equal()}{is\_equal()}}
+{\footnotesize\ttfamily \label{utils_8cpp_a8fbdf2aaa8257131a289c10f796ec25f} 
+bool is\+\_\+equal (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+Check wheter two float number are equal 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x,y} & The numbers that should be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result check 
+\end{DoxyReturn}
+\Hypertarget{utils_8cpp_ab9b65caeaf434e3a4cd7f65cf5db2e59}\index{utils.cpp@{utils.cpp}!is\_zero@{is\_zero}}
+\index{is\_zero@{is\_zero}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_zero()}{is\_zero()}}
+{\footnotesize\ttfamily \label{utils_8cpp_ab9b65caeaf434e3a4cd7f65cf5db2e59} 
+bool is\+\_\+zero (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+Check wheter the float number is equal to zero 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The number that should be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result check 
+\end{DoxyReturn}
+\Hypertarget{utils_8cpp_af8605472b569936b5060fa3e0ba5383b}\index{utils.cpp@{utils.cpp}!isfinite\_check@{isfinite\_check}}
+\index{isfinite\_check@{isfinite\_check}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{isfinite\_check()}{isfinite\_check()}}
+{\footnotesize\ttfamily \label{utils_8cpp_af8605472b569936b5060fa3e0ba5383b} 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} isfinite\+\_\+check (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+Check wheter the variable has infinite value 
+\begin{DoxyParams}{Parameters}
+{\em x} & The variable that should be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
+\Hypertarget{utils_8cpp_afe4a5bd09f2c05b723590b2412179646}\index{utils.cpp@{utils.cpp}!swap@{swap}}
+\index{swap@{swap}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily \label{utils_8cpp_afe4a5bd09f2c05b723590b2412179646} 
+void swap (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{size\+\_\+t}]{elem\+\_\+size}{}\end{DoxyParamCaption})}
+
+Swap the values of two variables 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em x,y} & The variables which values should be changed \\
+\hline
+\end{DoxyParams}

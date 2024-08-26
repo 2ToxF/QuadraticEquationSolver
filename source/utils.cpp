@@ -1,29 +1,38 @@
+/*!
+    \file
+    File with utilities
+*/
+
 #include <math.h>
 #include <string.h>
 #include "quad.h"
 #include "utils.h"
 
+const double PRECISION_LIMIT = 1E-7;
+
 
 void clear_buffer()
 {
-    while (getchar() != '\n') {}
+    int char_from_buffer = 0;
+    while ((char_from_buffer = getchar()) != '\n' && char_from_buffer != EOF) {}
 }
 
 
-CodeStatus file_open(const char file_name[], FILE** file_pointer)
+CodeError file_open(const char file_name[], FILE** file_pointer)
 {
     *file_pointer = fopen(file_name, "r");
+
     if (*file_pointer == NULL)
         return FILE_NOT_OPENED_ERROR;
     else
-        return OK;
+        return NO_ERROR;
 }
 
 
-CodeStatus isfinite_check(double x)
+CodeError isfinite_check(double x)
 {
     if (isfinite(x))
-        return OK;
+        return NO_ERROR;
     else
         return NUMBER_IS_INFINITE_ERROR;
 }
@@ -31,13 +40,13 @@ CodeStatus isfinite_check(double x)
 
 bool is_equal(double x, double y)
 {
-    return abs(x-y) <= 1E-7;
+    return is_zero(x-y);        // magic const
 }
 
 
 bool is_zero(double x)
 {
-    return abs(x) <= 1E-7;
+    return fabs(x) <= PRECISION_LIMIT;          // xueviu number
 }
 
 
