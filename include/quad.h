@@ -29,16 +29,16 @@ struct QuadEqParameters
 };
 
 /*!
-    Solves the specific equation
-    \param[in, out]  params  Parameters for equation
-    \return Status of completing the program
-*/
-CodeError main_eq_solve(struct QuadEqParameters* params);
-
-/*!
     Starts input coefficients and colving the equation
     \return Status of completing the program
 */
 CodeError run_main_solve();
+
+/*!
+    Solves the specific equation
+    \param[in, out]  params  Parameters for equation
+    \return Status of completing the program
+*/
+CodeError solve_quad_eq(struct QuadEqParameters* params);
 
 #endif

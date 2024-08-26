@@ -9,19 +9,15 @@ DED_FLAGS := -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat
 SRC_DIR := source
 INC_DIR := include
 OBJ_DIR := object
-BIN_DIR := bin
 
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 INCLUDES := $(wildcard $(INC_DIR)/*.h)
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-EXE := $(BIN_DIR)/QuadSolver.exe
+EXE := QuadSolver.exe
 
 DOCS_NAME := Docs_config
 
-all: $(OBJ_DIR) $(BIN_DIR) $(EXE)
-
-$(BIN_DIR):
-	@mkdir $@
+all: $(OBJ_DIR) $(EXE)
 
 $(OBJ_DIR):
 	@mkdir $@
@@ -47,12 +43,12 @@ run_tests:
 docs:
 	doxygen $(DOCS_NAME)
 
-clean_build:
-	rm $(BIN_DIR)/*.exe
+clean_exe:
+	rm *.exe
 
 clean_obj:
 	rm $(OBJ_DIR)/*.o
 
 clean:
-	rm $(BIN_DIR)/*.exe
+	rm *.exe
 	rm $(OBJ_DIR)/*.o

@@ -18,9 +18,9 @@ enum \mbox{\hyperlink{quad_8h_afd060068f75e1d56820c77fb322afa4c}{Roots\+Number}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec}{main\+\_\+eq\+\_\+solve}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}params)
-\item 
 \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{quad_8h_a492245075d504251383a4c1761b21779}{run\+\_\+main\+\_\+solve}} ()
+\item 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} \mbox{\hyperlink{quad_8h_a2867e70737523d5cfbf96b8cf648f561}{solve\+\_\+quad\+\_\+eq}} (struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}params)
 \end{DoxyCompactItemize}
 
 
@@ -59,20 +59,6 @@ INFINITE\+\_\+\+NUM\+\_\+\+OF\+\_\+\+ROOTS&Equation has infinte number of roots.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec}\index{quad.h@{quad.h}!main\_eq\_solve@{main\_eq\_solve}}
-\index{main\_eq\_solve@{main\_eq\_solve}!quad.h@{quad.h}}
-\doxysubsubsection{\texorpdfstring{main\_eq\_solve()}{main\_eq\_solve()}}
-{\footnotesize\ttfamily \label{quad_8h_acfeb6dbb4f30caa31c5750871c9044ec} 
-\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} main\+\_\+eq\+\_\+solve (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
-
-Solves the specific equation 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in,out}}  & {\em params} & Parameters for equation \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Status of completing the program 
-\end{DoxyReturn}
 \Hypertarget{quad_8h_a492245075d504251383a4c1761b21779}\index{quad.h@{quad.h}!run\_main\_solve@{run\_main\_solve}}
 \index{run\_main\_solve@{run\_main\_solve}!quad.h@{quad.h}}
 \doxysubsubsection{\texorpdfstring{run\_main\_solve()}{run\_main\_solve()}}
@@ -80,5 +66,19 @@ Status of completing the program
 \mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} run\+\_\+main\+\_\+solve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Starts input coefficients and colving the equation \begin{DoxyReturn}{Returns}
+Status of completing the program 
+\end{DoxyReturn}
+\Hypertarget{quad_8h_a2867e70737523d5cfbf96b8cf648f561}\index{quad.h@{quad.h}!solve\_quad\_eq@{solve\_quad\_eq}}
+\index{solve\_quad\_eq@{solve\_quad\_eq}!quad.h@{quad.h}}
+\doxysubsubsection{\texorpdfstring{solve\_quad\_eq()}{solve\_quad\_eq()}}
+{\footnotesize\ttfamily \label{quad_8h_a2867e70737523d5cfbf96b8cf648f561} 
+\mbox{\hyperlink{errors_8h_a4890027e84c3d8fa2a1701b5689a10ad}{Code\+Error}} solve\+\_\+quad\+\_\+eq (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_quad_eq_parameters}{Quad\+Eq\+Parameters}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
+
+Solves the specific equation 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em params} & Parameters for equation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 Status of completing the program 
 \end{DoxyReturn}

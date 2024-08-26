@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['unknown_0',['UNKNOWN',['../cmd__processing_8h.html#aa80c104317735273929950f80bef6554a6ce26a62afab55d7606ad4e92428b30c',1,'cmd_processing.h']]],
-  ['usage_1',['Usage',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
-  ['utils_2ecpp_2',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2eh_3',['utils.h',['../utils_8h.html',1,'']]]
+  ['x1_0',['x1',['../struct_quad_eq_parameters.html#af3d6d8fc8caa555f5129ccb5b1dae3ab',1,'QuadEqParameters']]],
+  ['x2_1',['x2',['../struct_quad_eq_parameters.html#a006bd32a3671bd3f038b867fee55a7ca',1,'QuadEqParameters']]]
 ];

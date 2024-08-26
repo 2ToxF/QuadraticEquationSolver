@@ -73,7 +73,7 @@ static CodeError run_test(TestStatus* test_status, const struct QuadEqParameters
     ASSERT(params != NULL);
     ASSERT(expected_roots != params);
 
-    CodeError code_status = main_eq_solve(params);
+    CodeError code_status = solve_quad_eq(params);
     if (code_status != NO_ERROR)
         return code_status;
 

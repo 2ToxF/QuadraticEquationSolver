@@ -14,12 +14,12 @@ Then download and unzip zip-file with the code and use command 'make' in the mai
 Here you can find most important commands of the program (use them from the main folder)
 
 ```
-   Command (cmd or powershell)   |                Usage                 |
+           Command (bash)        |                Usage                 |
 -------------------------------------------------------------------------
-       .bin\QuadSolver.exe       |         Start in solving mode        |
-   .bin\QuadSolver.exe --solve   |         Start in solving mode        |
-   .bin\QuadSolver.exe --tests   |          Start in test mode          |
-   .bin\QuadSolver.exe --help    |   View hint with available options   |
+         ./QuadSolver.exe        |         Start in solving mode        |
+     ./QuadSolver.exe --solve    |         Start in solving mode        |
+     ./QuadSolver.exe --tests    |          Start in test mode          |
+     ./QuadSolver.exe --help     |   View hint with available options   |
 -------------------------------------------------------------------------
                make              |         Prepare QuadSolver.exe       |
              make run            |         Start in solving mode        |
