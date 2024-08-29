@@ -66,7 +66,7 @@ void print_help()
 {
     PRINTBLUE("\nUsage:\n"
               "\n"
-              "1) .\\bin\\QuadSolver.exe [option]\n"
+              "1) .\\QuadSolver.exe [option]\n"
               "Options:\n"
               "    --tests                      Run tests for quadratic_equation_solver\n"
               "    --solve                      Run quadratic_equation_solver\n"
