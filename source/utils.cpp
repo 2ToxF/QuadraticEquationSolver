@@ -4,6 +4,7 @@
 */
 
 #include <math.h>
+#include <stdint.h>
 #include <string.h>
 #include "quad.h"
 #include "utils.h"
@@ -40,13 +41,13 @@ CodeError isfinite_check(double x)
 
 bool is_equal(double x, double y)
 {
-    return is_zero(x-y);        // magic const
+    return is_zero(x-y);
 }
 
 
 bool is_zero(double x)
 {
-    return fabs(x) <= PRECISION_LIMIT;          // xueviu number
+    return fabs(x) <= PRECISION_LIMIT;
 }
 
 
@@ -56,12 +57,26 @@ void swap(void* x, void* y, size_t elem_size)
     ASSERT(y != NULL);
     ASSERT(x != y);
 
-    char temp = 0;
-    for (size_t i = 0; i < elem_size; i++)
+    if (elem_size % 2 == 0)
     {
-        temp = *((char*) x);
-        *((char*) x) = *((char*) y);
-        *((char*) y) = temp;
-        x = ((char*) x) + 1; y = ((char*) y) + 1;
+        uint16_t temp = 0;
+        for (size_t i = 0; i < elem_size; i += 2)
+        {
+            temp = *((uint16_t*) x);
+            *((uint16_t*) x) = *((uint16_t*) y);
+            *((uint16_t*) y) = temp;
+            x = ((uint16_t*) x) + 1; y = ((uint16_t*) y) + 1;
+        }
+    }
+    else
+    {
+        char temp = 0;
+        for (size_t i = 0; i < elem_size; i++)
+        {
+            temp = *((char*) x);
+            *((char*) x) = *((char*) y);
+            *((char*) y) = temp;
+            x = ((char*) x) + 1; y = ((char*) y) + 1;
+        }
     }
 }
