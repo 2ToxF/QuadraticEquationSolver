@@ -76,7 +76,15 @@ void print_help()
               "Options:\n"
               "    _tests                       Run tests for quadratic_equation_solver\n"
               "    _solve                       Run quadratic_equation_solver\n"
-              "    _help                        Print hint with available commands\n");
+              "    _help                        Print hint with available commands\n"
+              "         />    >\n"
+              "         |  _  _|\n"
+              "       _/`= _x =|\n"
+              "      /        |\n"
+              "   __|   \\    /\n"
+              " /  _|    | | |\n"
+              " | (  \\___\\_)_)\n"
+              " \\__)\n");
 }
 
 
